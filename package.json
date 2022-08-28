@@ -1,0 +1,22 @@
+{
+  "name": "hjs",
+  "version": "1.0.0",
+  "description": "Sample project for hjs",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "shb9019",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.18.13",
+    "@babel/preset-env": "^7.18.10",
+    "babel-loader": "^8.2.5",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
