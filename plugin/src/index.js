@@ -1,4 +1,4 @@
-export default function({ types: t }) {
+export default ({ types: t }) => {
   return {
     visitor: {
       BinaryExpression(path) {
