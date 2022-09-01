@@ -75,13 +75,14 @@ function showMessage(from, text = "no text given") {
 [x] Publish sample babel tranpiler on npm
 [x] Brainstorm on transforming function to curried function
 [x] Integrate unit test framework
-[] Integrate changes only for specific test files
 [] Test out all possible combinations of functions and scopes
 [] Write dozens of unit tests
 [] Implement changes
+[] Change babel rules to apply only for specific extension of js files
 [] Publish to npm
 [] Publish as v1 on Github and NPM
-[] Develop website to 
+[] Develop website to showcase this. 
 
-## Optional Targets
+## Future Targets
 [] Think about name mangling to prevent collisions with existing function names
+[] Think about function composition

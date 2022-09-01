@@ -5,10 +5,11 @@ import hjsPlugin from '../src';
 pluginTester({
     plugin: hjsPlugin,
     filename: __filename,
-    tests: {
-        'using fixtures files': {
-            fixture: '__fixtures__/changed.js',
-            outputFixture: '__fixtures__/changed-output.js',
+    // fixtures: path.join(__dirname, '__fixtures__'),
+    tests: [
+        {
+            fixture: '__fixtures__/2-param-test/code.js',
+            outputFixture: '__fixtures__/2-param-test/output.js',
         },
-    },
+    ]
 });
