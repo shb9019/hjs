@@ -73,8 +73,8 @@ function showMessage(from, text = "no text given") {
 # Targets
 [x] Create sample babel transpiler
 [x] Publish sample babel tranpiler on npm
-[] Brainstorm on transforming function to curried function
-[] Integrate unit test framework
+[x] Brainstorm on transforming function to curried function
+[x] Integrate unit test framework
 [] Integrate changes only for specific test files
 [] Test out all possible combinations of functions and scopes
 [] Write dozens of unit tests

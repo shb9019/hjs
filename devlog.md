@@ -14,3 +14,6 @@
 12. Everything works as expected with webpack now.
 13. Migrating to babel using https://github.com/entwicklerstube/babel-plugin-root-import/ as reference. Worked pretty well.
 14. Minimized the amount of code required to make this work. Works well now!
+15. Refactored codebase and moved client files to separate directory.
+16. Looking into writing unit tests now.
+17. Integrated babel-plugin-tester to implement testing. Struggled with setting up fixtures, but that's done.
