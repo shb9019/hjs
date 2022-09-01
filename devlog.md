@@ -10,4 +10,7 @@
 8. Create test-plugin.js file in plugin directory.
 9. Setup webpack inside plugin directory to enable bundling.
 10. After struggling with the config to output the default function, I figured out that I have to specify a library name!
-11. Still another error now in the parent project, `self is not defined`.
+11. Still another error now in the parent project, `self is not defined`. Fixed this by setting `global` property to `this` in webpack config.
+12. Everything works as expected with webpack now.
+13. Migrating to babel using https://github.com/entwicklerstube/babel-plugin-root-import/ as reference. Worked pretty well.
+14. Minimized the amount of code required to make this work. Works well now!
