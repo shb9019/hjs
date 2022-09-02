@@ -20,3 +20,20 @@
 18. I'm done with recursively generating a curried body, but it still doesn't stick to the intended definition.
 19. Currently, calling a function with partial parameters, leads to a curried function which I don't want.
 20. I've successfully implemented the recursive definitions.
+21. I've hit a roadblock with default parameters. Consider the following function,
+```js
+  function addNumbers(a, b, c = 10, d = 11, e);
+```
+The following function call can be interpreted in 3 ways. Each of these can return a function accepting the remaining parameters.
+```js
+  addNumbers(1, 2); // Takes 3 parameters
+  addNumbers(1, 2, undefined); // Takes 2 parameters
+  addNumbers(1, 2, undefined, undefined); // Takes 1 parameter
+```
+Can we decide on how to deal with these? The best choice seems to be the first one. But that'll lead to the following function call.
+```js
+  function addNumbers(a, b, c = 10, d = 11);
+  addNumbers(0, 1)()();
+  addNumbers(0, 1, undefined, undefined);
+```
+I'm going with the first one itself.

@@ -86,3 +86,4 @@ function showMessage(from, text = "no text given") {
 ## Future Targets
 [] Think about name mangling to prevent collisions with existing function names
 [] Think about function composition
+[] Haskell-like pattern matching like "add 3 x = 3 + x"

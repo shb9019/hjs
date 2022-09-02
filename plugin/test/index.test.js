@@ -8,25 +8,32 @@ import hjsPlugin from '../src';
  * 3. [X] 3 Parameters basic function
  * 4. [X] 3 Parameters function expression
  * 5. [X] 3 Parameters anonymous function expresion
- * 6. 3 Parameters arrow functions
+ * 6. [X] 3 Parameters arrow functions
  * 7. Default parameters
- * 7. IIFE
- * 8. Spread parameters
- * 8. Async functions
- * 9. Changing scope
- * 9. Ensure scope is respected if it is passed through call, bind and apply.
- * 10. Generator functions
- * 11. Figure out directives
+ * 8. IIFE
+ * 9. Spread parameters
+ * 10. Async functions
+ * 11. Changing scope
+ * 12. Optional parameters
+ * 13. Decorators
+ * 14. Ensure scope is respected if it is passed through call, bind and apply.
+ * 15. Generator functions
+ * 16. Figure out directives
+ * 17. Arrow functions within in-built functions
  */
 
 pluginTester({
     plugin: hjsPlugin,
     filename: __filename,
     fixtures: path.join(__dirname, '__fixtures__'),
-    // tests: [
-    //     {
-    //         fixture: '__fixtures__/3-param-arrow-test/code.js',
-    //         outputFixture: '__fixtures__/3-param-arrow-test/output.js',
-    //     },
-    // ]
+    tests: [
+        {
+            fixture: '__fixtures__/default-param-test.js',
+            snapshot: true,
+        },
+        {
+            fixture: '__fixtures__/partial-default-param-test.js',
+            snapshot: true,
+        },
+    ]
 });

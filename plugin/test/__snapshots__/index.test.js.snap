@@ -1,0 +1,151 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`unknown plugin 1. unknown plugin: 1. unknown plugin 1`] = `
+
+function withDefaults(a, b, c = 1, d = 2, e = 3) {
+  return [a, b, c, d, e];
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function withDefaults(a, b, c = 1, d = 2, e = 3) {
+  let __$curriedResponse = function (a) {
+    return function (b, c = 1, d = 2, e = 3) {
+      let __$curriedResponse = function (b) {
+        return function (c = 1, d = 2, e = 3) {
+          let __$curriedResponse = function (c = 1) {
+            return function (d = 2, e = 3) {
+              let __$curriedResponse = function (d = 2) {
+                return function (e = 3) {
+                  return [a, b, c, d, e];
+                };
+              };
+
+              for (const arg of arguments) {
+                __$curriedResponse = __$curriedResponse(arg);
+              }
+
+              if (arguments.length === 0)
+                __$curriedResponse = __$curriedResponse(undefined);
+              return __$curriedResponse;
+            };
+          };
+
+          for (const arg of arguments) {
+            __$curriedResponse = __$curriedResponse(arg);
+          }
+
+          if (arguments.length === 0)
+            __$curriedResponse = __$curriedResponse(undefined);
+          return __$curriedResponse;
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedResponse = __$curriedResponse(arg);
+      }
+
+      if (arguments.length === 0)
+        __$curriedResponse = __$curriedResponse(undefined);
+      return __$curriedResponse;
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedResponse = __$curriedResponse(arg);
+  }
+
+  if (arguments.length === 0)
+    __$curriedResponse = __$curriedResponse(undefined);
+  return __$curriedResponse;
+}
+
+
+`;
+
+exports[`unknown plugin 2. unknown plugin: 2. unknown plugin 1`] = `
+
+function withDefaults(a, b, c = 1, d = 2, e = 3, f, g) {
+  return [a, b, c, d, e, f, g];
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function withDefaults(a, b, c = 1, d = 2, e = 3, f, g) {
+  let __$curriedResponse = function (a) {
+    return function (b, c = 1, d = 2, e = 3, f, g) {
+      let __$curriedResponse = function (b) {
+        return function (c = 1, d = 2, e = 3, f, g) {
+          let __$curriedResponse = function (c = 1) {
+            return function (d = 2, e = 3, f, g) {
+              let __$curriedResponse = function (d = 2) {
+                return function (e = 3, f, g) {
+                  let __$curriedResponse = function (e = 3) {
+                    return function (f, g) {
+                      let __$curriedResponse = function (f) {
+                        return function (g) {
+                          return [a, b, c, d, e, f, g];
+                        };
+                      };
+
+                      for (const arg of arguments) {
+                        __$curriedResponse = __$curriedResponse(arg);
+                      }
+
+                      if (arguments.length === 0)
+                        __$curriedResponse = __$curriedResponse(undefined);
+                      return __$curriedResponse;
+                    };
+                  };
+
+                  for (const arg of arguments) {
+                    __$curriedResponse = __$curriedResponse(arg);
+                  }
+
+                  if (arguments.length === 0)
+                    __$curriedResponse = __$curriedResponse(undefined);
+                  return __$curriedResponse;
+                };
+              };
+
+              for (const arg of arguments) {
+                __$curriedResponse = __$curriedResponse(arg);
+              }
+
+              if (arguments.length === 0)
+                __$curriedResponse = __$curriedResponse(undefined);
+              return __$curriedResponse;
+            };
+          };
+
+          for (const arg of arguments) {
+            __$curriedResponse = __$curriedResponse(arg);
+          }
+
+          if (arguments.length === 0)
+            __$curriedResponse = __$curriedResponse(undefined);
+          return __$curriedResponse;
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedResponse = __$curriedResponse(arg);
+      }
+
+      if (arguments.length === 0)
+        __$curriedResponse = __$curriedResponse(undefined);
+      return __$curriedResponse;
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedResponse = __$curriedResponse(arg);
+  }
+
+  if (arguments.length === 0)
+    __$curriedResponse = __$curriedResponse(undefined);
+  return __$curriedResponse;
+}
+
+
+`;

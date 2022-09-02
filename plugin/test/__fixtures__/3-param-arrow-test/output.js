@@ -11,6 +11,8 @@ const multiplyNumbers = (a, b, c) => {
         __$curriedResponse = __$curriedResponse(arg);
       }
 
+      if (arguments.length === 0)
+        __$curriedResponse = __$curriedResponse(undefined);
       return __$curriedResponse;
     };
   };
@@ -19,5 +21,7 @@ const multiplyNumbers = (a, b, c) => {
     __$curriedResponse = __$curriedResponse(arg);
   }
 
+  if (arguments.length === 0)
+    __$curriedResponse = __$curriedResponse(undefined);
   return __$curriedResponse;
 };

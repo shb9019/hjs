@@ -16,10 +16,11 @@ const generateCurriedBody = (t, {params, body, generator, async}) => {
   }
 
   // 1. Return Statement
-  const recursiveCurriedBody = generateCurriedBody(t, {params: params.slice(1), body, generator, async});
+  const currentParameters = 1;
+  const recursiveCurriedBody = generateCurriedBody(t, {params: params.slice(currentParameters), body, generator, async});
   const curriedFE = t.functionExpression(
     null,
-    params.slice(1),
+    params.slice(currentParameters),
     recursiveCurriedBody,
     generator,
     async
@@ -30,7 +31,7 @@ const generateCurriedBody = (t, {params, body, generator, async}) => {
   // 2. Function Expression
   const responseFE = t.functionExpression(
     null,
-    [params[0]],
+    params.slice(0, currentParameters),
     curriedBody,
     generator,
     async
@@ -51,7 +52,10 @@ const generateCurriedBody = (t, {params, body, generator, async}) => {
   const callCurryCode = `
   for(const arg of arguments) {
     ${resultIdName} = ${resultIdName}(arg);
-  }`;
+  }
+  
+  if (arguments.length === 0) ${resultIdName} = ${resultIdName}(undefined);
+  `;
   const callCurryBody = parse(callCurryCode).program.body;
   
   // 5. Final return statement.
