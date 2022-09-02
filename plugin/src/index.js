@@ -1,15 +1,26 @@
 import {parse} from "@babel/parser";
 import generate from "@babel/generator";
 
-let counter = 0;
+const wrapInBlockStatement = (t, body) => {
+  if (t.isBlockStatement(body)) {
+    return body;
+  } else if (t.isExpression(body)) {
+    const returnStatement = t.returnStatement(body);
+    return t.blockStatement([returnStatement], []);
+  }
+}
+
 const generateCurriedBody = (t, {params, body, generator, async}) => {
-  if (params.length <= 1) return body;
+  if (params.length <= 1) {
+    return wrapInBlockStatement(t, body);
+  }
 
   // 1. Return Statement
+  const recursiveCurriedBody = generateCurriedBody(t, {params: params.slice(1), body, generator, async});
   const curriedFE = t.functionExpression(
     null,
     params.slice(1),
-    generateCurriedBody(t, {params: params.slice(1), body, generator, async}),
+    recursiveCurriedBody,
     generator,
     async
   );
@@ -45,9 +56,10 @@ const generateCurriedBody = (t, {params, body, generator, async}) => {
   
   // 5. Final return statement.
   const returnStatement = t.returnStatement(t.identifier(resultIdName));
+
   const updatedBody = t.blockStatement(
     [responseDecl, ...callCurryBody, returnStatement],
-    [...body.directives]
+    recursiveCurriedBody.directives
   );
 
   return updatedBody;
@@ -63,7 +75,6 @@ export default ({ types: t }) => {
         if (params.length <= 1) {
           return;
         }
-        console.log(generate(node).code);
 
         const curriedBody = generateCurriedBody(t, {
           params,
@@ -71,8 +82,6 @@ export default ({ types: t }) => {
           generator: node.generator,
           async: node.async
         });
-        console.log(generate(curriedBody).code);
-
 
         if (t.isFunctionDeclaration(path.node)) {
           path.replaceWith(
