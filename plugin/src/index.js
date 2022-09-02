@@ -1,5 +1,3 @@
-import generate from "@babel/generator";
-import { functionExpression } from "@babel/types";
 import {parse} from "@babel/parser";
 
 const getNodeName = (node) => {
@@ -13,6 +11,30 @@ const getCurriedFunctionName = (actualFunctionName) => {
   return curriedFunctionPrefix + actualFunctionName;
 }
 
+const generateCurriedBody = (t, {params, body, generator, async}) => {
+  if (params.length === 0) return body;
+
+  const recursiveBody = generateCurriedBody(t, {
+    params: params.slice(1),
+    body,
+    generator,
+    async
+  });
+
+  const curriedFE = t.functionExpression(
+    null,
+    [params[0]],
+    recursiveBody,
+    generator,
+    async
+  );
+  const curriedReturn = t.returnStatement(curriedFE);
+  const curriedBody = t.blockStatement([curriedReturn], []);
+
+  return curriedBody;
+}
+
+
 export default ({ types: t }) => {
   return {
     visitor: {
@@ -20,9 +42,6 @@ export default ({ types: t }) => {
         const {node} = path;
 
         const actualName = getNodeName(node);
-        if (actualName && actualName.startsWith(curriedFunctionPrefix)) {
-          return;
-        }
 
         const {params, body} = node;
         if (params.length <= 1) {
@@ -30,16 +49,12 @@ export default ({ types: t }) => {
         }
 
         const curriedName = getCurriedFunctionName(actualName);
-
-        const curriedFE = t.functionExpression(
-          null,
-          params.slice(1),
+        const curriedBody = generateCurriedBody(t, {
+          params: params.slice(1),
           body,
-          node.generator,
-          node.async
-        );
-        const curriedReturn = t.returnStatement(curriedFE);
-        const curriedBody = t.blockStatement([curriedReturn], []);
+          generator: node.generator,
+          async: node.async
+        });
 
         if (t.isFunctionDeclaration(path.node)) {
           path.insertBefore(
@@ -70,10 +85,9 @@ export default ({ types: t }) => {
         const resultIdName = "__$curriedResponse";
         const callCurryCode = `
           let ${resultIdName} = ${curriedName};
-          const k = arguments.length;
-          while (k--) {
-            ${resultIdName} = ${resultIdName}(arguments[0]);
-          }
+          arguments.forEach((arg) => {
+            ${resultIdName} = ${resultIdName}(arg);
+          });
         `;
         const callCurryBody = parse(callCurryCode).program.body;
         const returnStatement = t.returnStatement(t.identifier(resultIdName));
