@@ -9,8 +9,8 @@ import hjsPlugin from '../src';
  * 4. [X] 3 Parameters function expression
  * 5. [X] 3 Parameters anonymous function expresion
  * 6. [X] 3 Parameters arrow functions
- * 7. Default parameters
- * 8. IIFE
+ * 7. [X] Default parameters
+ * 8. [X] IIFE
  * 9. Spread parameters
  * 10. Async functions
  * 11. Changing scope
@@ -33,6 +33,10 @@ pluginTester({
         },
         {
             fixture: '__fixtures__/partial-default-param-test.js',
+            snapshot: true,
+        },
+        {
+            fixture: '__fixtures__/iife-test.js',
             snapshot: true,
         },
     ]

@@ -149,3 +149,42 @@ function withDefaults(a, b, c = 1, d = 2, e = 3, f, g) {
 
 
 `;
+
+exports[`unknown plugin 3. unknown plugin: 3. unknown plugin 1`] = `
+
+const result = (function (a, b, c) {
+  return a + b + c;
+})(1, 2, 3);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = (function (a, b, c) {
+  let __$curriedResponse = function (a) {
+    return function (b, c) {
+      let __$curriedResponse = function (b) {
+        return function (c) {
+          return a + b + c;
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedResponse = __$curriedResponse(arg);
+      }
+
+      if (arguments.length === 0)
+        __$curriedResponse = __$curriedResponse(undefined);
+      return __$curriedResponse;
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedResponse = __$curriedResponse(arg);
+  }
+
+  if (arguments.length === 0)
+    __$curriedResponse = __$curriedResponse(undefined);
+  return __$curriedResponse;
+})(1, 2, 3);
+
+
+`;
