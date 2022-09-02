@@ -1,4 +1,4 @@
-# Setup
+# Log
 
 1. Install nvm and switch to node v16.
 2. Create npm repo using `npm init`
@@ -17,3 +17,5 @@
 15. Refactored codebase and moved client files to separate directory.
 16. Looking into writing unit tests now.
 17. Integrated babel-plugin-tester to implement testing. Struggled with setting up fixtures, but that's done.
+18. I'm done with recursively generating a curried body, but it still doesn't stick to the intended definition.
+19. Currently, calling a function with partial parameters, leads to a curried function which I don't want.

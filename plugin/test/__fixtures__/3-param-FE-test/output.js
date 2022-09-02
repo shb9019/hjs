@@ -1,8 +1,9 @@
-function addNumbers(a, b, c) {
+const multiplyNumbers = function multiply(a, b, c) {
   let __$curriedResponse = function (a) {
     return function (b) {
       return function (c) {
-        return a + b + c;
+        console.log(multiply(a, b, c));
+        return a * b * c;
       };
     };
   };
@@ -12,4 +13,4 @@ function addNumbers(a, b, c) {
   }
 
   return __$curriedResponse;
-}
+};

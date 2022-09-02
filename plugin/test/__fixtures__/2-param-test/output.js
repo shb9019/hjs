@@ -1,13 +1,13 @@
-function __curriedshowMessage(from) {
-  return function (text) {
-    alert(from + ": " + text);
-  };
-}
-
 function showMessage(from, text) {
-  let __$curriedResponse = __curriedshowMessage;
-  arguments.forEach((arg) => {
+  let __$curriedResponse = function (from) {
+    return function (text) {
+      alert(from + ": " + text);
+    };
+  };
+
+  for (const arg of arguments) {
     __$curriedResponse = __$curriedResponse(arg);
-  });
+  }
+
   return __$curriedResponse;
 }
