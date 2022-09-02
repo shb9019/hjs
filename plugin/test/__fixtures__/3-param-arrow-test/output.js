@@ -1,4 +1,4 @@
-const multiplyNumbers = function (a, b, c) {
+const multiplyNumbers = (a, b, c) => {
   let __$curriedResponse = function (a) {
     return function (b, c) {
       let __$curriedResponse = function (b) {

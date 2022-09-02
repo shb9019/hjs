@@ -93,7 +93,7 @@ export default ({ types: t }) => {
               node.async
             )
           );
-        } else {
+        } else if (t.isFunctionExpression(path.node)) {
           path.replaceWith(
             t.functionExpression(
               node.id,
@@ -103,7 +103,16 @@ export default ({ types: t }) => {
               node.async
             )
           );
+        } else if (t.isArrowFunctionExpression(path.node)) {
+          path.replaceWith(
+            t.arrowFunctionExpression(
+              params,
+              curriedBody,
+              node.async
+            )
+          );
         }
+
         path.skip();
       }
     }
