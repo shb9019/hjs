@@ -10,8 +10,8 @@ const multiplyNumbers = function (a, b, c) {
       for (const arg of arguments) {
         __$curriedResponse = __$curriedResponse(arg);
       }
-    
-      return __$curriedResponse;    
+
+      return __$curriedResponse;
     };
   };
 

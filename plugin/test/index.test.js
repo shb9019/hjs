@@ -14,6 +14,8 @@ import hjsPlugin from '../src';
  * 8. Spread parameters
  * 8. Async functions
  * 9. Changing scope
+ * 10. Generator functions
+ * 11. Figure out directives
  */
 
 pluginTester({

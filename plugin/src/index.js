@@ -1,27 +1,56 @@
 import {parse} from "@babel/parser";
 import generate from "@babel/generator";
 
+let counter = 0;
 const generateCurriedBody = (t, {params, body, generator, async}) => {
-  if (params.length === 0) return body;
+  if (params.length <= 1) return body;
 
-  const recursiveBody = generateCurriedBody(t, {
-    params: params.slice(1),
-    body,
-    generator,
-    async
-  });
-
+  // 1. Return Statement
   const curriedFE = t.functionExpression(
     null,
-    [params[0]],
-    recursiveBody,
+    params.slice(1),
+    generateCurriedBody(t, {params: params.slice(1), body, generator, async}),
     generator,
     async
   );
   const curriedReturn = t.returnStatement(curriedFE);
   const curriedBody = t.blockStatement([curriedReturn], []);
 
-  return curriedBody;
+  // 2. Function Expression
+  const responseFE = t.functionExpression(
+    null,
+    [params[0]],
+    curriedBody,
+    generator,
+    async
+  );
+
+  // 3. Variable declaration
+  const resultIdName = "__$curriedResponse";
+  const responseVD = t.variableDeclarator(
+    t.identifier(resultIdName),
+    responseFE
+  );
+  const responseDecl = t.variableDeclaration(
+    "let",
+    [responseVD]
+  );
+
+  // 4. For args loop
+  const callCurryCode = `
+  for(const arg of arguments) {
+    ${resultIdName} = ${resultIdName}(arg);
+  }`;
+  const callCurryBody = parse(callCurryCode).program.body;
+  
+  // 5. Final return statement.
+  const returnStatement = t.returnStatement(t.identifier(resultIdName));
+  const updatedBody = t.blockStatement(
+    [responseDecl, ...callCurryBody, returnStatement],
+    [...body.directives]
+  );
+
+  return updatedBody;
 };
 
 export default ({ types: t }) => {
@@ -34,49 +63,23 @@ export default ({ types: t }) => {
         if (params.length <= 1) {
           return;
         }
+        console.log(generate(node).code);
 
         const curriedBody = generateCurriedBody(t, {
-          params: params.slice(1),
+          params,
           body,
           generator: node.generator,
           async: node.async
         });
-        const curriedFE = t.functionExpression(
-          null,
-          [node.params[0]],
-          curriedBody,
-          node.generator,
-          node.async
-        );
-        const resultIdName = "__$curriedResponse";
+        console.log(generate(curriedBody).code);
 
-        const curriedVD = t.variableDeclarator(
-          t.identifier(resultIdName),
-          curriedFE
-        );
-        const curriedDecl = t.variableDeclaration(
-          "let",
-          [curriedVD]
-        );
-
-        const callCurryCode = `
-          for(const arg of arguments) {
-            ${resultIdName} = ${resultIdName}(arg);
-          }
-        `;
-        const callCurryBody = parse(callCurryCode).program.body;
-        const returnStatement = t.returnStatement(t.identifier(resultIdName));
-        const updatedBody = t.blockStatement(
-          [curriedDecl, ...callCurryBody, returnStatement],
-          [...body.directives]
-        );
 
         if (t.isFunctionDeclaration(path.node)) {
           path.replaceWith(
             t.functionDeclaration(
               node.id,
               params,
-              updatedBody,
+              curriedBody,
               node.generator,
               node.async
             )
@@ -86,7 +89,7 @@ export default ({ types: t }) => {
             t.functionExpression(
               node.id,
               params,
-              updatedBody,
+              curriedBody,
               node.generator,
               node.async
             )

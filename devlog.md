@@ -19,3 +19,4 @@
 17. Integrated babel-plugin-tester to implement testing. Struggled with setting up fixtures, but that's done.
 18. I'm done with recursively generating a curried body, but it still doesn't stick to the intended definition.
 19. Currently, calling a function with partial parameters, leads to a curried function which I don't want.
+20. I've successfully implemented the recursive definitions.
