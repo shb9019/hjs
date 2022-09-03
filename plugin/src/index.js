@@ -57,28 +57,24 @@ const generateCurriedBody = (t, {id, params, body, generator, async, isArrow}) =
 
   // 4. For args loop
   let callCurryCode = '';
-  if (isArrow) {
-    // Arrow functions do not have arguments binding.
-    callCurryCode = `const args = [];`;
-    params.forEach((param) => {
-      callCurryCode += `if (${param.name} !== undefined) args.push(${param.name});`;
-    });
-    callCurryCode += `
-      for(const arg of args) {
-        ${resultIdName} = ${resultIdName}.call(this, arg);
-      }
+  // Arrow functions do not have arguments binding.
+  callCurryCode = `const args = [];`;
+  params.forEach((param) => {
+    let parameterName = '';
+    if (t.isAssignmentPattern(param)) {
+      parameterName = param.left.name;
+    } else {
+      parameterName = param.name;
+    }
+    callCurryCode += `if (${parameterName} !== undefined) args.push(${parameterName});`;
+  });
+  callCurryCode += `
+    for(const arg of args) {
+      ${resultIdName} = ${resultIdName}.call(this, arg);
+    }
 
-      if (args.length === 0) ${resultIdName} = ${resultIdName}.call(this, undefined);
-    `;
-  } else {
-    callCurryCode = `
-      for(const arg of arguments) {
-        ${resultIdName} = ${resultIdName}.call(this, arg);
-      }
-
-      if (arguments.length === 0) ${resultIdName} = ${resultIdName}.call(this, undefined);
-    `;
-  }
+    if (args.length === 0) ${resultIdName} = ${resultIdName}.call(this, undefined);
+  `;
 
   const callCurryBody = parse(callCurryCode).program.body;
   

@@ -41,3 +41,5 @@ I'm going with the first one itself.
 23. Think about using function properties to achieve this, instead of directly modifying functions itself.
 24. "this" will be whatever is passed before the dot. This is inline with javascript behavior.
 25. This point can lead to weird behavior where `obj.func(1)(2)` will not have obj context. It should instead be called as `obj.func(1, 2)`.
+26. Functions passed to library or in-built methods can take lesser parameters, but never more parameters than what is defined. Exception is variadic functions.
+27. This plugin doesn't support functions built using `new Function` constructor.

@@ -16,7 +16,7 @@ import hjsPlugin from '../src';
  * 11. [X] Changing scope
  * 14. [X] Ensure scope is respected if it is passed through call, bind and apply.
  * 15. [X] Generator functions
- * 17. Arrow functions within in-built functions
+ * 17. [X] Arrow functions within in-built functions
  * 18. Dynamically generated functions
  * 19. How would classes work with this enabled?
  * 20. What happens to class constructors?
@@ -24,6 +24,7 @@ import hjsPlugin from '../src';
  * 22. Using a function constructor
  * 23. Passing callback functions
  * 24. Javascript decorator functions
+ * 25. Arrow functions with spread operator
  */
 
 pluginTester({
@@ -110,6 +111,21 @@ pluginTester({
         {
             title: 'generator function',
             fixture: '__fixtures__/generator-test.js',
+            snapshot: true,
+        },
+        {
+            title: 'arrow function passed to array built-in method',
+            fixture: '__fixtures__/array-filter-arrow-test.js',
+            snapshot: true,
+        },
+        {
+            title: 'function expression passed to array built-in method',
+            fixture: '__fixtures__/array-reduce-func-test.js',
+            snapshot: true,
+        },
+        {
+            title: 'function built using function constructor',
+            fixture: '__fixtures__/function-constr-test.js',
             snapshot: true,
         }, 
     ]
