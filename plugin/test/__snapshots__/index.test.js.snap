@@ -9,55 +9,55 @@ function withDefaults(a, b, c = 1, d = 2, e = 3) {
       ↓ ↓ ↓ ↓ ↓ ↓
 
 function withDefaults(a, b, c = 1, d = 2, e = 3) {
-  let __$curriedResponse = function (a) {
+  let __$curriedwithDefaults = function (a) {
     return function (b, c = 1, d = 2, e = 3) {
-      let __$curriedResponse = function (b) {
+      let __$curriedwithDefaults = function (b) {
         return function (c = 1, d = 2, e = 3) {
-          let __$curriedResponse = function (c = 1) {
+          let __$curriedwithDefaults = function (c = 1) {
             return function (d = 2, e = 3) {
-              let __$curriedResponse = function (d = 2) {
+              let __$curriedwithDefaults = function (d = 2) {
                 return function (e = 3) {
                   return [a, b, c, d, e];
                 };
               };
 
               for (const arg of arguments) {
-                __$curriedResponse = __$curriedResponse(arg);
+                __$curriedwithDefaults = __$curriedwithDefaults(arg);
               }
 
               if (arguments.length === 0)
-                __$curriedResponse = __$curriedResponse(undefined);
-              return __$curriedResponse;
+                __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+              return __$curriedwithDefaults;
             };
           };
 
           for (const arg of arguments) {
-            __$curriedResponse = __$curriedResponse(arg);
+            __$curriedwithDefaults = __$curriedwithDefaults(arg);
           }
 
           if (arguments.length === 0)
-            __$curriedResponse = __$curriedResponse(undefined);
-          return __$curriedResponse;
+            __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+          return __$curriedwithDefaults;
         };
       };
 
       for (const arg of arguments) {
-        __$curriedResponse = __$curriedResponse(arg);
+        __$curriedwithDefaults = __$curriedwithDefaults(arg);
       }
 
       if (arguments.length === 0)
-        __$curriedResponse = __$curriedResponse(undefined);
-      return __$curriedResponse;
+        __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+      return __$curriedwithDefaults;
     };
   };
 
   for (const arg of arguments) {
-    __$curriedResponse = __$curriedResponse(arg);
+    __$curriedwithDefaults = __$curriedwithDefaults(arg);
   }
 
   if (arguments.length === 0)
-    __$curriedResponse = __$curriedResponse(undefined);
-  return __$curriedResponse;
+    __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+  return __$curriedwithDefaults;
 }
 
 
@@ -72,79 +72,80 @@ function withDefaults(a, b, c = 1, d = 2, e = 3, f, g) {
       ↓ ↓ ↓ ↓ ↓ ↓
 
 function withDefaults(a, b, c = 1, d = 2, e = 3, f, g) {
-  let __$curriedResponse = function (a) {
+  let __$curriedwithDefaults = function (a) {
     return function (b, c = 1, d = 2, e = 3, f, g) {
-      let __$curriedResponse = function (b) {
+      let __$curriedwithDefaults = function (b) {
         return function (c = 1, d = 2, e = 3, f, g) {
-          let __$curriedResponse = function (c = 1) {
+          let __$curriedwithDefaults = function (c = 1) {
             return function (d = 2, e = 3, f, g) {
-              let __$curriedResponse = function (d = 2) {
+              let __$curriedwithDefaults = function (d = 2) {
                 return function (e = 3, f, g) {
-                  let __$curriedResponse = function (e = 3) {
+                  let __$curriedwithDefaults = function (e = 3) {
                     return function (f, g) {
-                      let __$curriedResponse = function (f) {
+                      let __$curriedwithDefaults = function (f) {
                         return function (g) {
                           return [a, b, c, d, e, f, g];
                         };
                       };
 
                       for (const arg of arguments) {
-                        __$curriedResponse = __$curriedResponse(arg);
+                        __$curriedwithDefaults = __$curriedwithDefaults(arg);
                       }
 
                       if (arguments.length === 0)
-                        __$curriedResponse = __$curriedResponse(undefined);
-                      return __$curriedResponse;
+                        __$curriedwithDefaults =
+                          __$curriedwithDefaults(undefined);
+                      return __$curriedwithDefaults;
                     };
                   };
 
                   for (const arg of arguments) {
-                    __$curriedResponse = __$curriedResponse(arg);
+                    __$curriedwithDefaults = __$curriedwithDefaults(arg);
                   }
 
                   if (arguments.length === 0)
-                    __$curriedResponse = __$curriedResponse(undefined);
-                  return __$curriedResponse;
+                    __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+                  return __$curriedwithDefaults;
                 };
               };
 
               for (const arg of arguments) {
-                __$curriedResponse = __$curriedResponse(arg);
+                __$curriedwithDefaults = __$curriedwithDefaults(arg);
               }
 
               if (arguments.length === 0)
-                __$curriedResponse = __$curriedResponse(undefined);
-              return __$curriedResponse;
+                __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+              return __$curriedwithDefaults;
             };
           };
 
           for (const arg of arguments) {
-            __$curriedResponse = __$curriedResponse(arg);
+            __$curriedwithDefaults = __$curriedwithDefaults(arg);
           }
 
           if (arguments.length === 0)
-            __$curriedResponse = __$curriedResponse(undefined);
-          return __$curriedResponse;
+            __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+          return __$curriedwithDefaults;
         };
       };
 
       for (const arg of arguments) {
-        __$curriedResponse = __$curriedResponse(arg);
+        __$curriedwithDefaults = __$curriedwithDefaults(arg);
       }
 
       if (arguments.length === 0)
-        __$curriedResponse = __$curriedResponse(undefined);
-      return __$curriedResponse;
+        __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+      return __$curriedwithDefaults;
     };
   };
 
   for (const arg of arguments) {
-    __$curriedResponse = __$curriedResponse(arg);
+    __$curriedwithDefaults = __$curriedwithDefaults(arg);
   }
 
   if (arguments.length === 0)
-    __$curriedResponse = __$curriedResponse(undefined);
-  return __$curriedResponse;
+    __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+  return __$curriedwithDefaults;
 }
 
 
@@ -159,31 +160,29 @@ const result = (function (a, b, c) {
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const result = (function (a, b, c) {
-  let __$curriedResponse = function (a) {
+  let __$curriedFunc = function (a) {
     return function (b, c) {
-      let __$curriedResponse = function (b) {
+      let __$curriedFunc = function (b) {
         return function (c) {
           return a + b + c;
         };
       };
 
       for (const arg of arguments) {
-        __$curriedResponse = __$curriedResponse(arg);
+        __$curriedFunc = __$curriedFunc(arg);
       }
 
-      if (arguments.length === 0)
-        __$curriedResponse = __$curriedResponse(undefined);
-      return __$curriedResponse;
+      if (arguments.length === 0) __$curriedFunc = __$curriedFunc(undefined);
+      return __$curriedFunc;
     };
   };
 
   for (const arg of arguments) {
-    __$curriedResponse = __$curriedResponse(arg);
+    __$curriedFunc = __$curriedFunc(arg);
   }
 
-  if (arguments.length === 0)
-    __$curriedResponse = __$curriedResponse(undefined);
-  return __$curriedResponse;
+  if (arguments.length === 0) __$curriedFunc = __$curriedFunc(undefined);
+  return __$curriedFunc;
 })(1, 2, 3);
 
 
@@ -202,9 +201,9 @@ const multiplyAll = (a, b, ...rest) => {
       ↓ ↓ ↓ ↓ ↓ ↓
 
 const multiplyAll = (a, b, ...rest) => {
-  let __$curriedResponse = function (a) {
+  let __$curriedFunc = function (a) {
     return function (b, ...rest) {
-      let __$curriedResponse = function (b) {
+      let __$curriedFunc = function (b) {
         return function (...rest) {
           let product = a * b;
 
@@ -217,12 +216,11 @@ const multiplyAll = (a, b, ...rest) => {
       };
 
       for (const arg of arguments) {
-        __$curriedResponse = __$curriedResponse(arg);
+        __$curriedFunc = __$curriedFunc(arg);
       }
 
-      if (arguments.length === 0)
-        __$curriedResponse = __$curriedResponse(undefined);
-      return __$curriedResponse;
+      if (arguments.length === 0) __$curriedFunc = __$curriedFunc(undefined);
+      return __$curriedFunc;
     };
   };
 
@@ -232,11 +230,195 @@ const multiplyAll = (a, b, ...rest) => {
   if (undefined !== undefined) args.push(undefined);
 
   for (const arg of args) {
-    __$curriedResponse = __$curriedResponse(arg);
+    __$curriedFunc = __$curriedFunc(arg);
   }
 
-  if (args.length === 0) __$curriedResponse = __$curriedResponse(undefined);
-  return __$curriedResponse;
+  if (args.length === 0) __$curriedFunc = __$curriedFunc(undefined);
+  return __$curriedFunc;
+};
+
+
+`;
+
+exports[`unknown plugin 5. unknown plugin: 5. unknown plugin 1`] = `
+
+function resolveAfterKSeconds(k) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, k * 1000);
+  });
+}
+
+async function asyncCall(a, b, c) {
+  console.log('calling');
+  const waitTime = a + b + c;
+  const result = await resolveAfterKSeconds(waitTime);
+  console.log(result);
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function resolveAfterKSeconds(k) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("resolved");
+    }, k * 1000);
+  });
+}
+
+function asyncCall(a, b, c) {
+  let __$curriedasyncCall = function (a) {
+    return function (b, c) {
+      let __$curriedasyncCall = function (b) {
+        return async function (c) {
+          console.log("calling");
+          const waitTime = a + b + c;
+          const result = await resolveAfterKSeconds(waitTime);
+          console.log(result);
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedasyncCall = __$curriedasyncCall(arg);
+      }
+
+      if (arguments.length === 0)
+        __$curriedasyncCall = __$curriedasyncCall(undefined);
+      return __$curriedasyncCall;
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedasyncCall = __$curriedasyncCall(arg);
+  }
+
+  if (arguments.length === 0)
+    __$curriedasyncCall = __$curriedasyncCall(undefined);
+  return __$curriedasyncCall;
+}
+
+
+`;
+
+exports[`unknown plugin 6. unknown plugin: 6. unknown plugin 1`] = `
+
+function resolveAfterKSeconds(k) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, k * 1000);
+  });
+}
+
+const asyncCall = async function (a, b, c) {
+  console.log('calling');
+  const waitTime = a + b + c;
+  const result = await resolveAfterKSeconds(waitTime);
+  console.log(result);
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function resolveAfterKSeconds(k) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("resolved");
+    }, k * 1000);
+  });
+}
+
+const asyncCall = function (a, b, c) {
+  let __$curriedFunc = function (a) {
+    return function (b, c) {
+      let __$curriedFunc = function (b) {
+        return async function (c) {
+          console.log("calling");
+          const waitTime = a + b + c;
+          const result = await resolveAfterKSeconds(waitTime);
+          console.log(result);
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedFunc = __$curriedFunc(arg);
+      }
+
+      if (arguments.length === 0) __$curriedFunc = __$curriedFunc(undefined);
+      return __$curriedFunc;
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedFunc = __$curriedFunc(arg);
+  }
+
+  if (arguments.length === 0) __$curriedFunc = __$curriedFunc(undefined);
+  return __$curriedFunc;
+};
+
+
+`;
+
+exports[`unknown plugin 7. unknown plugin: 7. unknown plugin 1`] = `
+
+const resolveAfterKSeconds = (k) => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, k * 1000);
+  });
+}
+
+const asyncCall = async (a, b, c) => {
+  console.log('calling');
+  const waitTime = a + b + c;
+  const result = await resolveAfterKSeconds(waitTime);
+  console.log(result);
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const resolveAfterKSeconds = (k) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("resolved");
+    }, k * 1000);
+  });
+};
+
+const asyncCall = (a, b, c) => {
+  let __$curriedFunc = function (a) {
+    return function (b, c) {
+      let __$curriedFunc = function (b) {
+        return async function (c) {
+          console.log("calling");
+          const waitTime = a + b + c;
+          const result = await resolveAfterKSeconds(waitTime);
+          console.log(result);
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedFunc = __$curriedFunc(arg);
+      }
+
+      if (arguments.length === 0) __$curriedFunc = __$curriedFunc(undefined);
+      return __$curriedFunc;
+    };
+  };
+
+  const args = [];
+  if (a !== undefined) args.push(a);
+  if (b !== undefined) args.push(b);
+  if (c !== undefined) args.push(c);
+
+  for (const arg of args) {
+    __$curriedFunc = __$curriedFunc(arg);
+  }
+
+  if (args.length === 0) __$curriedFunc = __$curriedFunc(undefined);
+  return __$curriedFunc;
 };
 
 

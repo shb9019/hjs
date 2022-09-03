@@ -1,19 +1,18 @@
 const multiplyNumbers = (a, b, c) => {
-  let __$curriedResponse = function (a) {
+  let __$curriedFunc = function (a) {
     return function (b, c) {
-      let __$curriedResponse = function (b) {
+      let __$curriedFunc = function (b) {
         return function (c) {
           return a * b * c;
         };
       };
 
       for (const arg of arguments) {
-        __$curriedResponse = __$curriedResponse(arg);
+        __$curriedFunc = __$curriedFunc(arg);
       }
 
-      if (arguments.length === 0)
-        __$curriedResponse = __$curriedResponse(undefined);
-      return __$curriedResponse;
+      if (arguments.length === 0) __$curriedFunc = __$curriedFunc(undefined);
+      return __$curriedFunc;
     };
   };
 
@@ -23,9 +22,9 @@ const multiplyNumbers = (a, b, c) => {
   if (c !== undefined) args.push(c);
 
   for (const arg of args) {
-    __$curriedResponse = __$curriedResponse(arg);
+    __$curriedFunc = __$curriedFunc(arg);
   }
 
-  if (args.length === 0) __$curriedResponse = __$curriedResponse(undefined);
-  return __$curriedResponse;
+  if (args.length === 0) __$curriedFunc = __$curriedFunc(undefined);
+  return __$curriedFunc;
 };

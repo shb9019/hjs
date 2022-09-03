@@ -11,7 +11,7 @@ import hjsPlugin from '../src';
  * 6. [X] 3 Parameters arrow functions
  * 7. [X] Default parameters
  * 8. [X] IIFE
- * 9. Variadic functions and rest parameters
+ * 9. [X] Variadic functions and rest parameters
  * 10. Async functions
  * 11. Changing scope
  * 12. Optional parameters
@@ -42,6 +42,18 @@ pluginTester({
         },
         {
             fixture: '__fixtures__/rest-param-test.js',
+            snapshot: true,
+        },
+        {
+            fixture: '__fixtures__/async-func-test.js',
+            snapshot: true,
+        },
+        {
+            fixture: '__fixtures__/async-func-expr-test.js',
+            snapshot: true,
+        },
+        {
+            fixture: '__fixtures__/async-arrow-test.js',
             snapshot: true,
         },
     ]

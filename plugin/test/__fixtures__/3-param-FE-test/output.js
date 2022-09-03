@@ -1,9 +1,9 @@
 let counter = 0;
 
 const multiplyNumbers = function multiply(a, b, c) {
-  let __$curriedResponse = function (a) {
+  let __$curriedmultiply = function (a) {
     return function (b, c) {
-      let __$curriedResponse = function (b) {
+      let __$curriedmultiply = function (b) {
         return function (c) {
           if (counter == 0) {
             counter++;
@@ -15,20 +15,20 @@ const multiplyNumbers = function multiply(a, b, c) {
       };
 
       for (const arg of arguments) {
-        __$curriedResponse = __$curriedResponse(arg);
+        __$curriedmultiply = __$curriedmultiply(arg);
       }
 
       if (arguments.length === 0)
-        __$curriedResponse = __$curriedResponse(undefined);
-      return __$curriedResponse;
+        __$curriedmultiply = __$curriedmultiply(undefined);
+      return __$curriedmultiply;
     };
   };
 
   for (const arg of arguments) {
-    __$curriedResponse = __$curriedResponse(arg);
+    __$curriedmultiply = __$curriedmultiply(arg);
   }
 
   if (arguments.length === 0)
-    __$curriedResponse = __$curriedResponse(undefined);
-  return __$curriedResponse;
+    __$curriedmultiply = __$curriedmultiply(undefined);
+  return __$curriedmultiply;
 };

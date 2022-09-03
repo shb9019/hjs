@@ -10,7 +10,7 @@ const wrapInBlockStatement = (t, body) => {
   }
 }
 
-const generateCurriedBody = (t, {params, body, generator, async, isArrow}) => {
+const generateCurriedBody = (t, {id, params, body, generator, async, isArrow}) => {
   if (params.length <= 1) {
     return wrapInBlockStatement(t, body);
   }
@@ -18,6 +18,7 @@ const generateCurriedBody = (t, {params, body, generator, async, isArrow}) => {
   // 1. Return Statement
   const currentParameters = 1;
   const recursiveCurriedBody = generateCurriedBody(t, {
+    id,
     params: params.slice(currentParameters),
     body,
     generator,
@@ -29,7 +30,7 @@ const generateCurriedBody = (t, {params, body, generator, async, isArrow}) => {
     params.slice(currentParameters),
     recursiveCurriedBody,
     generator,
-    async
+    (params.length <= 2) ? async : false
   );
   const curriedReturn = t.returnStatement(curriedFE);
   const curriedBody = t.blockStatement([curriedReturn], []);
@@ -40,11 +41,11 @@ const generateCurriedBody = (t, {params, body, generator, async, isArrow}) => {
     params.slice(0, currentParameters),
     curriedBody,
     generator,
-    async
+    false
   );
 
   // 3. Variable declaration
-  const resultIdName = "__$curriedResponse";
+  const resultIdName = `__$curried${id ? id.name : "Func"}`;
   const responseVD = t.variableDeclarator(
     t.identifier(resultIdName),
     responseFE
@@ -98,12 +99,13 @@ export default ({ types: t }) => {
       Function(path) {
         const {node} = path;
 
-        const {params, body} = node;
+        const {id, params, body} = node;
         if (params.length <= 1) {
           return;
         }
 
         const curriedBody = generateCurriedBody(t, {
+          id,
           params,
           body,
           generator: node.generator,
@@ -118,7 +120,7 @@ export default ({ types: t }) => {
               params,
               curriedBody,
               node.generator,
-              node.async
+              false
             )
           );
         } else if (t.isFunctionExpression(node)) {
@@ -128,7 +130,7 @@ export default ({ types: t }) => {
               params,
               curriedBody,
               node.generator,
-              node.async
+              false
             )
           );
         } else if (t.isArrowFunctionExpression(node)) {
@@ -136,7 +138,7 @@ export default ({ types: t }) => {
             t.arrowFunctionExpression(
               params,
               curriedBody,
-              node.async
+              false
             )
           );
         }

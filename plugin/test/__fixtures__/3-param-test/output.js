@@ -1,27 +1,27 @@
 function addNumbers(a, b, c) {
-  let __$curriedResponse = function (a) {
+  let __$curriedaddNumbers = function (a) {
     return function (b, c) {
-      let __$curriedResponse = function (b) {
+      let __$curriedaddNumbers = function (b) {
         return function (c) {
           return a + b + c;
         };
       };
 
       for (const arg of arguments) {
-        __$curriedResponse = __$curriedResponse(arg);
+        __$curriedaddNumbers = __$curriedaddNumbers(arg);
       }
 
       if (arguments.length === 0)
-        __$curriedResponse = __$curriedResponse(undefined);
-      return __$curriedResponse;
+        __$curriedaddNumbers = __$curriedaddNumbers(undefined);
+      return __$curriedaddNumbers;
     };
   };
 
   for (const arg of arguments) {
-    __$curriedResponse = __$curriedResponse(arg);
+    __$curriedaddNumbers = __$curriedaddNumbers(arg);
   }
 
   if (arguments.length === 0)
-    __$curriedResponse = __$curriedResponse(undefined);
-  return __$curriedResponse;
+    __$curriedaddNumbers = __$curriedaddNumbers(undefined);
+  return __$curriedaddNumbers;
 }

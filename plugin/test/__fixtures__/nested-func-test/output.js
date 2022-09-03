@@ -1,5 +1,5 @@
 function addSquares(a, b) {
-  let __$curriedResponse = function (a) {
+  let __$curriedaddSquares = function (a) {
     return function (b) {
       function square(x) {
         return x * x;
@@ -10,10 +10,10 @@ function addSquares(a, b) {
   };
 
   for (const arg of arguments) {
-    __$curriedResponse = __$curriedResponse(arg);
+    __$curriedaddSquares = __$curriedaddSquares(arg);
   }
 
   if (arguments.length === 0)
-    __$curriedResponse = __$curriedResponse(undefined);
-  return __$curriedResponse;
+    __$curriedaddSquares = __$curriedaddSquares(undefined);
+  return __$curriedaddSquares;
 }
