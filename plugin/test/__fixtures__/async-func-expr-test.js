@@ -12,3 +12,7 @@ const asyncCall = async function (a, b, c) {
   const result = await resolveAfterKSeconds(waitTime);
   console.log(result);
 }
+
+await asyncCall(2)(4)(1);
+await asyncCall(2, 4)(1);
+await asyncCall(2, 4, 1);

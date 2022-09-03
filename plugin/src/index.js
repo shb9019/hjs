@@ -64,19 +64,19 @@ const generateCurriedBody = (t, {id, params, body, generator, async, isArrow}) =
       callCurryCode += `if (${param.name} !== undefined) args.push(${param.name});`;
     });
     callCurryCode += `
-    for(const arg of args) {
-        ${resultIdName} = ${resultIdName}(arg);
+      for(const arg of args) {
+        ${resultIdName} = ${resultIdName}.call(this, arg);
       }
 
-      if (args.length === 0) ${resultIdName} = ${resultIdName}(undefined);
+      if (args.length === 0) ${resultIdName} = ${resultIdName}.call(this, undefined);
     `;
   } else {
     callCurryCode = `
       for(const arg of arguments) {
-        ${resultIdName} = ${resultIdName}(arg);
+        ${resultIdName} = ${resultIdName}.call(this, arg);
       }
 
-      if (arguments.length === 0) ${resultIdName} = ${resultIdName}(undefined);
+      if (arguments.length === 0) ${resultIdName} = ${resultIdName}.call(this, undefined);
     `;
   }
 

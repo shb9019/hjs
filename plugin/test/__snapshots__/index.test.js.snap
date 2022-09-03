@@ -1,10 +1,551 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`unknown plugin 1. unknown plugin: 1. unknown plugin 1`] = `
+exports[`Base tests anonymous function expression with 3 parameters: anonymous function expression with 3 parameters 1`] = `
+
+const multiplyNumbers = function (a, b, c) {
+  return a * b * c;
+};
+
+multiplyNumbers(1)(2)(3);
+multiplyNumbers(1)(2, 3);
+multiplyNumbers(1, 2, 3);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const multiplyNumbers = function (a, b, c) {
+  let __$curriedFunc = function (a) {
+    return function (b, c) {
+      let __$curriedFunc = function (b) {
+        return function (c) {
+          return a * b * c;
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedFunc = __$curriedFunc.call(this, arg);
+      }
+
+      if (arguments.length === 0)
+        __$curriedFunc = __$curriedFunc.call(this, undefined);
+      return __$curriedFunc;
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedFunc = __$curriedFunc.call(this, arg);
+  }
+
+  if (arguments.length === 0)
+    __$curriedFunc = __$curriedFunc.call(this, undefined);
+  return __$curriedFunc;
+};
+
+multiplyNumbers(1)(2)(3);
+multiplyNumbers(1)(2, 3);
+multiplyNumbers(1, 2, 3);
+
+
+`;
+
+exports[`Base tests arrow function expression with 3 parameters: arrow function expression with 3 parameters 1`] = `
+
+const multiplyNumbers = (a, b, c) => a * b * c;
+
+multiplyNumbers(1)(2)(3);
+multiplyNumbers(1)(2, 3);
+multiplyNumbers(1, 2, 3);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const multiplyNumbers = (a, b, c) => {
+  let __$curriedFunc = function (a) {
+    return function (b, c) {
+      let __$curriedFunc = function (b) {
+        return function (c) {
+          return a * b * c;
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedFunc = __$curriedFunc.call(this, arg);
+      }
+
+      if (arguments.length === 0)
+        __$curriedFunc = __$curriedFunc.call(this, undefined);
+      return __$curriedFunc;
+    };
+  };
+
+  const args = [];
+  if (a !== undefined) args.push(a);
+  if (b !== undefined) args.push(b);
+  if (c !== undefined) args.push(c);
+
+  for (const arg of args) {
+    __$curriedFunc = __$curriedFunc.call(this, arg);
+  }
+
+  if (args.length === 0) __$curriedFunc = __$curriedFunc.call(this, undefined);
+  return __$curriedFunc;
+};
+
+multiplyNumbers(1)(2)(3);
+multiplyNumbers(1)(2, 3);
+multiplyNumbers(1, 2, 3);
+
+
+`;
+
+exports[`Base tests async arrow function expression: async arrow function expression 1`] = `
+
+const resolveAfterKSeconds = (k) => {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, k * 1000);
+  });
+}
+
+const asyncCall = async (a, b, c) => {
+  console.log('calling');
+  const waitTime = a + b + c;
+  const result = await resolveAfterKSeconds(waitTime);
+  console.log(result);
+}
+
+await asyncCall(2)(4)(1);
+await asyncCall(2, 4)(1);
+await asyncCall(2, 4, 1);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const resolveAfterKSeconds = (k) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("resolved");
+    }, k * 1000);
+  });
+};
+
+const asyncCall = (a, b, c) => {
+  let __$curriedFunc = function (a) {
+    return function (b, c) {
+      let __$curriedFunc = function (b) {
+        return async function (c) {
+          console.log("calling");
+          const waitTime = a + b + c;
+          const result = await resolveAfterKSeconds(waitTime);
+          console.log(result);
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedFunc = __$curriedFunc.call(this, arg);
+      }
+
+      if (arguments.length === 0)
+        __$curriedFunc = __$curriedFunc.call(this, undefined);
+      return __$curriedFunc;
+    };
+  };
+
+  const args = [];
+  if (a !== undefined) args.push(a);
+  if (b !== undefined) args.push(b);
+  if (c !== undefined) args.push(c);
+
+  for (const arg of args) {
+    __$curriedFunc = __$curriedFunc.call(this, arg);
+  }
+
+  if (args.length === 0) __$curriedFunc = __$curriedFunc.call(this, undefined);
+  return __$curriedFunc;
+};
+
+await asyncCall(2)(4)(1);
+await asyncCall(2, 4)(1);
+await asyncCall(2, 4, 1);
+
+
+`;
+
+exports[`Base tests async function declaration: async function declaration 1`] = `
+
+function resolveAfterKSeconds(k) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, k * 1000);
+  });
+}
+
+async function asyncCall(a, b, c) {
+  console.log('calling');
+  const waitTime = a + b + c;
+  const result = await resolveAfterKSeconds(waitTime);
+  console.log(result);
+}
+
+await asyncCall(2)(4)(1);
+await asyncCall(2, 4)(1);
+await asyncCall(2, 4, 1);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function resolveAfterKSeconds(k) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("resolved");
+    }, k * 1000);
+  });
+}
+
+function asyncCall(a, b, c) {
+  let __$curriedasyncCall = function (a) {
+    return function (b, c) {
+      let __$curriedasyncCall = function (b) {
+        return async function (c) {
+          console.log("calling");
+          const waitTime = a + b + c;
+          const result = await resolveAfterKSeconds(waitTime);
+          console.log(result);
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedasyncCall = __$curriedasyncCall.call(this, arg);
+      }
+
+      if (arguments.length === 0)
+        __$curriedasyncCall = __$curriedasyncCall.call(this, undefined);
+      return __$curriedasyncCall;
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedasyncCall = __$curriedasyncCall.call(this, arg);
+  }
+
+  if (arguments.length === 0)
+    __$curriedasyncCall = __$curriedasyncCall.call(this, undefined);
+  return __$curriedasyncCall;
+}
+
+await asyncCall(2)(4)(1);
+await asyncCall(2, 4)(1);
+await asyncCall(2, 4, 1);
+
+
+`;
+
+exports[`Base tests async function expression: async function expression 1`] = `
+
+function resolveAfterKSeconds(k) {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, k * 1000);
+  });
+}
+
+const asyncCall = async function (a, b, c) {
+  console.log('calling');
+  const waitTime = a + b + c;
+  const result = await resolveAfterKSeconds(waitTime);
+  console.log(result);
+}
+
+await asyncCall(2)(4)(1);
+await asyncCall(2, 4)(1);
+await asyncCall(2, 4, 1);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function resolveAfterKSeconds(k) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve("resolved");
+    }, k * 1000);
+  });
+}
+
+const asyncCall = function (a, b, c) {
+  let __$curriedFunc = function (a) {
+    return function (b, c) {
+      let __$curriedFunc = function (b) {
+        return async function (c) {
+          console.log("calling");
+          const waitTime = a + b + c;
+          const result = await resolveAfterKSeconds(waitTime);
+          console.log(result);
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedFunc = __$curriedFunc.call(this, arg);
+      }
+
+      if (arguments.length === 0)
+        __$curriedFunc = __$curriedFunc.call(this, undefined);
+      return __$curriedFunc;
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedFunc = __$curriedFunc.call(this, arg);
+  }
+
+  if (arguments.length === 0)
+    __$curriedFunc = __$curriedFunc.call(this, undefined);
+  return __$curriedFunc;
+};
+
+await asyncCall(2)(4)(1);
+await asyncCall(2, 4)(1);
+await asyncCall(2, 4, 1);
+
+
+`;
+
+exports[`Base tests function declaration with 2 parameters: function declaration with 2 parameters 1`] = `
+
+function showMessage(from, text) {
+  alert(from + ": " + text);
+}
+
+showMessage("Sai")("Hello World");
+showMessage("Sai", "Hello World");
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function showMessage(from, text) {
+  let __$curriedshowMessage = function (from) {
+    return function (text) {
+      alert(from + ": " + text);
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedshowMessage = __$curriedshowMessage.call(this, arg);
+  }
+
+  if (arguments.length === 0)
+    __$curriedshowMessage = __$curriedshowMessage.call(this, undefined);
+  return __$curriedshowMessage;
+}
+
+showMessage("Sai")("Hello World");
+showMessage("Sai", "Hello World");
+
+
+`;
+
+exports[`Base tests function declaration with 3 parameters: function declaration with 3 parameters 1`] = `
+
+function addNumbers(a, b, c) {
+  return a + b + c;
+}
+
+addNumbers(5)(6)(2);
+addNumbers(5)(6, 2);
+addNumbers(5, 6, 2);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function addNumbers(a, b, c) {
+  let __$curriedaddNumbers = function (a) {
+    return function (b, c) {
+      let __$curriedaddNumbers = function (b) {
+        return function (c) {
+          return a + b + c;
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedaddNumbers = __$curriedaddNumbers.call(this, arg);
+      }
+
+      if (arguments.length === 0)
+        __$curriedaddNumbers = __$curriedaddNumbers.call(this, undefined);
+      return __$curriedaddNumbers;
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedaddNumbers = __$curriedaddNumbers.call(this, arg);
+  }
+
+  if (arguments.length === 0)
+    __$curriedaddNumbers = __$curriedaddNumbers.call(this, undefined);
+  return __$curriedaddNumbers;
+}
+
+addNumbers(5)(6)(2);
+addNumbers(5)(6, 2);
+addNumbers(5, 6, 2);
+
+
+`;
+
+exports[`Base tests function with no params: function with no params 1`] = `
+
+function showMessage() {
+  alert("Hello everyone");
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function showMessage() {
+  alert("Hello everyone");
+}
+
+
+`;
+
+exports[`Base tests iife: iife 1`] = `
+
+const result = (function (a, b, c) {
+  return a + b + c;
+})(1, 2, 3);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = (function (a, b, c) {
+  let __$curriedFunc = function (a) {
+    return function (b, c) {
+      let __$curriedFunc = function (b) {
+        return function (c) {
+          return a + b + c;
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedFunc = __$curriedFunc.call(this, arg);
+      }
+
+      if (arguments.length === 0)
+        __$curriedFunc = __$curriedFunc.call(this, undefined);
+      return __$curriedFunc;
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedFunc = __$curriedFunc.call(this, arg);
+  }
+
+  if (arguments.length === 0)
+    __$curriedFunc = __$curriedFunc.call(this, undefined);
+  return __$curriedFunc;
+})(1, 2, 3);
+
+
+`;
+
+exports[`Base tests named function expression with 3 parameters: named function expression with 3 parameters 1`] = `
+
+let counter = 0;
+
+const multiplyNumbers = function multiply (a, b, c) {
+  if (counter == 0) {
+    counter++;
+    console.log(multiply(a, b, c));
+  }
+
+  return a * b * c;
+};
+
+multiplyNumbers(1)(2)(3);
+multiplyNumbers(1)(2, 3);
+multiplyNumbers(1, 2, 3);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+let counter = 0;
+
+const multiplyNumbers = function multiply(a, b, c) {
+  let __$curriedmultiply = function (a) {
+    return function (b, c) {
+      let __$curriedmultiply = function (b) {
+        return function (c) {
+          if (counter == 0) {
+            counter++;
+            console.log(multiply(a, b, c));
+          }
+
+          return a * b * c;
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedmultiply = __$curriedmultiply.call(this, arg);
+      }
+
+      if (arguments.length === 0)
+        __$curriedmultiply = __$curriedmultiply.call(this, undefined);
+      return __$curriedmultiply;
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedmultiply = __$curriedmultiply.call(this, arg);
+  }
+
+  if (arguments.length === 0)
+    __$curriedmultiply = __$curriedmultiply.call(this, undefined);
+  return __$curriedmultiply;
+};
+
+multiplyNumbers(1)(2)(3);
+multiplyNumbers(1)(2, 3);
+multiplyNumbers(1, 2, 3);
+
+
+`;
+
+exports[`Base tests nested functions: nested functions 1`] = `
+
+function addSquares(a, b) {
+  function square(x) {
+    return x * x;
+  }
+  return square(a) + square(b);
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function addSquares(a, b) {
+  let __$curriedaddSquares = function (a) {
+    return function (b) {
+      function square(x) {
+        return x * x;
+      }
+
+      return square(a) + square(b);
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedaddSquares = __$curriedaddSquares.call(this, arg);
+  }
+
+  if (arguments.length === 0)
+    __$curriedaddSquares = __$curriedaddSquares.call(this, undefined);
+  return __$curriedaddSquares;
+}
+
+
+`;
+
+exports[`Base tests with default parameters at the end: with default parameters at the end 1`] = `
 
 function withDefaults(a, b, c = 1, d = 2, e = 3) {
   return [a, b, c, d, e];
 }
+
+withDefaults(1,2)()()();
+withDefaults(1,2)(undefined, undefined, undefined);
+withDefaults(1,2)(undefined, undefined)();
+withDefaults(1,2)(3, 4)(5);
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
@@ -22,48 +563,59 @@ function withDefaults(a, b, c = 1, d = 2, e = 3) {
               };
 
               for (const arg of arguments) {
-                __$curriedwithDefaults = __$curriedwithDefaults(arg);
+                __$curriedwithDefaults = __$curriedwithDefaults.call(this, arg);
               }
 
               if (arguments.length === 0)
-                __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+                __$curriedwithDefaults = __$curriedwithDefaults.call(
+                  this,
+                  undefined
+                );
               return __$curriedwithDefaults;
             };
           };
 
           for (const arg of arguments) {
-            __$curriedwithDefaults = __$curriedwithDefaults(arg);
+            __$curriedwithDefaults = __$curriedwithDefaults.call(this, arg);
           }
 
           if (arguments.length === 0)
-            __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+            __$curriedwithDefaults = __$curriedwithDefaults.call(
+              this,
+              undefined
+            );
           return __$curriedwithDefaults;
         };
       };
 
       for (const arg of arguments) {
-        __$curriedwithDefaults = __$curriedwithDefaults(arg);
+        __$curriedwithDefaults = __$curriedwithDefaults.call(this, arg);
       }
 
       if (arguments.length === 0)
-        __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+        __$curriedwithDefaults = __$curriedwithDefaults.call(this, undefined);
       return __$curriedwithDefaults;
     };
   };
 
   for (const arg of arguments) {
-    __$curriedwithDefaults = __$curriedwithDefaults(arg);
+    __$curriedwithDefaults = __$curriedwithDefaults.call(this, arg);
   }
 
   if (arguments.length === 0)
-    __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+    __$curriedwithDefaults = __$curriedwithDefaults.call(this, undefined);
   return __$curriedwithDefaults;
 }
+
+withDefaults(1, 2)()()();
+withDefaults(1, 2)(undefined, undefined, undefined);
+withDefaults(1, 2)(undefined, undefined)();
+withDefaults(1, 2)(3, 4)(5);
 
 
 `;
 
-exports[`unknown plugin 2. unknown plugin: 2. unknown plugin 1`] = `
+exports[`Base tests with default parameters in between : with default parameters in between  1`] = `
 
 function withDefaults(a, b, c = 1, d = 2, e = 3, f, g) {
   return [a, b, c, d, e, f, g];
@@ -89,106 +641,86 @@ function withDefaults(a, b, c = 1, d = 2, e = 3, f, g) {
                       };
 
                       for (const arg of arguments) {
-                        __$curriedwithDefaults = __$curriedwithDefaults(arg);
+                        __$curriedwithDefaults = __$curriedwithDefaults.call(
+                          this,
+                          arg
+                        );
                       }
 
                       if (arguments.length === 0)
-                        __$curriedwithDefaults =
-                          __$curriedwithDefaults(undefined);
+                        __$curriedwithDefaults = __$curriedwithDefaults.call(
+                          this,
+                          undefined
+                        );
                       return __$curriedwithDefaults;
                     };
                   };
 
                   for (const arg of arguments) {
-                    __$curriedwithDefaults = __$curriedwithDefaults(arg);
+                    __$curriedwithDefaults = __$curriedwithDefaults.call(
+                      this,
+                      arg
+                    );
                   }
 
                   if (arguments.length === 0)
-                    __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+                    __$curriedwithDefaults = __$curriedwithDefaults.call(
+                      this,
+                      undefined
+                    );
                   return __$curriedwithDefaults;
                 };
               };
 
               for (const arg of arguments) {
-                __$curriedwithDefaults = __$curriedwithDefaults(arg);
+                __$curriedwithDefaults = __$curriedwithDefaults.call(this, arg);
               }
 
               if (arguments.length === 0)
-                __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+                __$curriedwithDefaults = __$curriedwithDefaults.call(
+                  this,
+                  undefined
+                );
               return __$curriedwithDefaults;
             };
           };
 
           for (const arg of arguments) {
-            __$curriedwithDefaults = __$curriedwithDefaults(arg);
+            __$curriedwithDefaults = __$curriedwithDefaults.call(this, arg);
           }
 
           if (arguments.length === 0)
-            __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+            __$curriedwithDefaults = __$curriedwithDefaults.call(
+              this,
+              undefined
+            );
           return __$curriedwithDefaults;
         };
       };
 
       for (const arg of arguments) {
-        __$curriedwithDefaults = __$curriedwithDefaults(arg);
+        __$curriedwithDefaults = __$curriedwithDefaults.call(this, arg);
       }
 
       if (arguments.length === 0)
-        __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+        __$curriedwithDefaults = __$curriedwithDefaults.call(this, undefined);
       return __$curriedwithDefaults;
     };
   };
 
   for (const arg of arguments) {
-    __$curriedwithDefaults = __$curriedwithDefaults(arg);
+    __$curriedwithDefaults = __$curriedwithDefaults.call(this, arg);
   }
 
   if (arguments.length === 0)
-    __$curriedwithDefaults = __$curriedwithDefaults(undefined);
+    __$curriedwithDefaults = __$curriedwithDefaults.call(this, undefined);
   return __$curriedwithDefaults;
 }
 
 
 `;
 
-exports[`unknown plugin 3. unknown plugin: 3. unknown plugin 1`] = `
-
-const result = (function (a, b, c) {
-  return a + b + c;
-})(1, 2, 3);
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const result = (function (a, b, c) {
-  let __$curriedFunc = function (a) {
-    return function (b, c) {
-      let __$curriedFunc = function (b) {
-        return function (c) {
-          return a + b + c;
-        };
-      };
-
-      for (const arg of arguments) {
-        __$curriedFunc = __$curriedFunc(arg);
-      }
-
-      if (arguments.length === 0) __$curriedFunc = __$curriedFunc(undefined);
-      return __$curriedFunc;
-    };
-  };
-
-  for (const arg of arguments) {
-    __$curriedFunc = __$curriedFunc(arg);
-  }
-
-  if (arguments.length === 0) __$curriedFunc = __$curriedFunc(undefined);
-  return __$curriedFunc;
-})(1, 2, 3);
-
-
-`;
-
-exports[`unknown plugin 4. unknown plugin: 4. unknown plugin 1`] = `
+exports[`Base tests with one rest parameters field: with one rest parameters field 1`] = `
 
 const multiplyAll = (a, b, ...rest) => {
   let product = a * b;
@@ -197,6 +729,10 @@ const multiplyAll = (a, b, ...rest) => {
   }
   return product;
 };
+
+multiplyAll(1, 2)();
+multiplyAll(1, 2)(3, 4, 5);
+multiplyAll(1)(2)(3, 4);
 
       ↓ ↓ ↓ ↓ ↓ ↓
 
@@ -216,10 +752,11 @@ const multiplyAll = (a, b, ...rest) => {
       };
 
       for (const arg of arguments) {
-        __$curriedFunc = __$curriedFunc(arg);
+        __$curriedFunc = __$curriedFunc.call(this, arg);
       }
 
-      if (arguments.length === 0) __$curriedFunc = __$curriedFunc(undefined);
+      if (arguments.length === 0)
+        __$curriedFunc = __$curriedFunc.call(this, undefined);
       return __$curriedFunc;
     };
   };
@@ -230,196 +767,16 @@ const multiplyAll = (a, b, ...rest) => {
   if (undefined !== undefined) args.push(undefined);
 
   for (const arg of args) {
-    __$curriedFunc = __$curriedFunc(arg);
+    __$curriedFunc = __$curriedFunc.call(this, arg);
   }
 
-  if (args.length === 0) __$curriedFunc = __$curriedFunc(undefined);
+  if (args.length === 0) __$curriedFunc = __$curriedFunc.call(this, undefined);
   return __$curriedFunc;
 };
 
-
-`;
-
-exports[`unknown plugin 5. unknown plugin: 5. unknown plugin 1`] = `
-
-function resolveAfterKSeconds(k) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve('resolved');
-    }, k * 1000);
-  });
-}
-
-async function asyncCall(a, b, c) {
-  console.log('calling');
-  const waitTime = a + b + c;
-  const result = await resolveAfterKSeconds(waitTime);
-  console.log(result);
-}
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-function resolveAfterKSeconds(k) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("resolved");
-    }, k * 1000);
-  });
-}
-
-function asyncCall(a, b, c) {
-  let __$curriedasyncCall = function (a) {
-    return function (b, c) {
-      let __$curriedasyncCall = function (b) {
-        return async function (c) {
-          console.log("calling");
-          const waitTime = a + b + c;
-          const result = await resolveAfterKSeconds(waitTime);
-          console.log(result);
-        };
-      };
-
-      for (const arg of arguments) {
-        __$curriedasyncCall = __$curriedasyncCall(arg);
-      }
-
-      if (arguments.length === 0)
-        __$curriedasyncCall = __$curriedasyncCall(undefined);
-      return __$curriedasyncCall;
-    };
-  };
-
-  for (const arg of arguments) {
-    __$curriedasyncCall = __$curriedasyncCall(arg);
-  }
-
-  if (arguments.length === 0)
-    __$curriedasyncCall = __$curriedasyncCall(undefined);
-  return __$curriedasyncCall;
-}
-
-
-`;
-
-exports[`unknown plugin 6. unknown plugin: 6. unknown plugin 1`] = `
-
-function resolveAfterKSeconds(k) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve('resolved');
-    }, k * 1000);
-  });
-}
-
-const asyncCall = async function (a, b, c) {
-  console.log('calling');
-  const waitTime = a + b + c;
-  const result = await resolveAfterKSeconds(waitTime);
-  console.log(result);
-}
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-function resolveAfterKSeconds(k) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("resolved");
-    }, k * 1000);
-  });
-}
-
-const asyncCall = function (a, b, c) {
-  let __$curriedFunc = function (a) {
-    return function (b, c) {
-      let __$curriedFunc = function (b) {
-        return async function (c) {
-          console.log("calling");
-          const waitTime = a + b + c;
-          const result = await resolveAfterKSeconds(waitTime);
-          console.log(result);
-        };
-      };
-
-      for (const arg of arguments) {
-        __$curriedFunc = __$curriedFunc(arg);
-      }
-
-      if (arguments.length === 0) __$curriedFunc = __$curriedFunc(undefined);
-      return __$curriedFunc;
-    };
-  };
-
-  for (const arg of arguments) {
-    __$curriedFunc = __$curriedFunc(arg);
-  }
-
-  if (arguments.length === 0) __$curriedFunc = __$curriedFunc(undefined);
-  return __$curriedFunc;
-};
-
-
-`;
-
-exports[`unknown plugin 7. unknown plugin: 7. unknown plugin 1`] = `
-
-const resolveAfterKSeconds = (k) => {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve('resolved');
-    }, k * 1000);
-  });
-}
-
-const asyncCall = async (a, b, c) => {
-  console.log('calling');
-  const waitTime = a + b + c;
-  const result = await resolveAfterKSeconds(waitTime);
-  console.log(result);
-}
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const resolveAfterKSeconds = (k) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve("resolved");
-    }, k * 1000);
-  });
-};
-
-const asyncCall = (a, b, c) => {
-  let __$curriedFunc = function (a) {
-    return function (b, c) {
-      let __$curriedFunc = function (b) {
-        return async function (c) {
-          console.log("calling");
-          const waitTime = a + b + c;
-          const result = await resolveAfterKSeconds(waitTime);
-          console.log(result);
-        };
-      };
-
-      for (const arg of arguments) {
-        __$curriedFunc = __$curriedFunc(arg);
-      }
-
-      if (arguments.length === 0) __$curriedFunc = __$curriedFunc(undefined);
-      return __$curriedFunc;
-    };
-  };
-
-  const args = [];
-  if (a !== undefined) args.push(a);
-  if (b !== undefined) args.push(b);
-  if (c !== undefined) args.push(c);
-
-  for (const arg of args) {
-    __$curriedFunc = __$curriedFunc(arg);
-  }
-
-  if (args.length === 0) __$curriedFunc = __$curriedFunc(undefined);
-  return __$curriedFunc;
-};
+multiplyAll(1, 2)();
+multiplyAll(1, 2)(3, 4, 5);
+multiplyAll(1)(2)(3, 4);
 
 
 `;

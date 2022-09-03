@@ -37,5 +37,5 @@ Can we decide on how to deal with these? The best choice seems to be the first o
   addNumbers(0, 1, undefined, undefined);
 ```
 I'm going with the first one itself.
-22. I hit another issue with arrow functions not having the arguments binding. Overcame it by creating a separate args array that
-  will be used by the code.
+22. I hit another issue with arrow functions not having the arguments binding. Overcame it by creating a separate args array that will be used by the code.
+23. Think about using function properties to achieve this, instead of directly modifying functions itself.

@@ -5,3 +5,7 @@ const multiplyAll = (a, b, ...rest) => {
   }
   return product;
 };
+
+multiplyAll(1, 2)();
+multiplyAll(1, 2)(3, 4, 5);
+multiplyAll(1)(2)(3, 4);
