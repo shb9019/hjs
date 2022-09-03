@@ -29,7 +29,7 @@ const generateCurriedBody = (t, {id, params, body, generator, async, isArrow}) =
     null,
     params.slice(currentParameters),
     recursiveCurriedBody,
-    generator,
+    (params.length <= 2) ? generator : false,
     (params.length <= 2) ? async : false
   );
   const curriedReturn = t.returnStatement(curriedFE);
@@ -40,7 +40,7 @@ const generateCurriedBody = (t, {id, params, body, generator, async, isArrow}) =
     null,
     params.slice(0, currentParameters),
     curriedBody,
-    generator,
+    false,
     false
   );
 
@@ -119,7 +119,7 @@ export default ({ types: t }) => {
               node.id,
               params,
               curriedBody,
-              node.generator,
+              false,
               false
             )
           );
@@ -129,7 +129,7 @@ export default ({ types: t }) => {
               node.id,
               params,
               curriedBody,
-              node.generator,
+              false,
               false
             )
           );
@@ -149,7 +149,7 @@ export default ({ types: t }) => {
               params,
               curriedBody,
               node.computed,
-              node.generator,
+              false,
               false
             )
           );

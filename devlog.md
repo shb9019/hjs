@@ -39,3 +39,5 @@ Can we decide on how to deal with these? The best choice seems to be the first o
 I'm going with the first one itself.
 22. I hit another issue with arrow functions not having the arguments binding. Overcame it by creating a separate args array that will be used by the code.
 23. Think about using function properties to achieve this, instead of directly modifying functions itself.
+24. "this" will be whatever is passed before the dot. This is inline with javascript behavior.
+25. This point can lead to weird behavior where `obj.func(1)(2)` will not have obj context. It should instead be called as `obj.func(1, 2)`.

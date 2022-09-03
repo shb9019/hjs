@@ -409,7 +409,7 @@ incrVal5.call(obj, 6, 7);
 console.log(obj.value); // Should be 139
 
 const incrVal10 = obj.increaseValue(5, 5);
-incrVal5.call(obj, 5);
+incrVal10.call(obj, 5);
 console.log(obj.value); // Should be 154
 
       ↓ ↓ ↓ ↓ ↓ ↓
@@ -458,7 +458,7 @@ incrVal5.call(obj, 6, 7);
 console.log(obj.value); // Should be 139
 
 const incrVal10 = obj.increaseValue(5, 5);
-incrVal5.call(obj, 5);
+incrVal10.call(obj, 5);
 console.log(obj.value); // Should be 154
 
 
@@ -475,6 +475,100 @@ function showMessage() {
 function showMessage() {
   alert("Hello everyone");
 }
+
+
+`;
+
+exports[`Base tests generator function: generator function 1`] = `
+
+function* anotherGenerator(i,j) {
+  yield i + 1;
+  yield i + 2;
+  yield j + 1;
+  yield j + 2;
+}
+
+function* generator(i,j,k) {
+  yield* anotherGenerator(i,j);
+  yield k + 1;
+  yield k + 2;
+}
+
+const gen = generator(10, 20, 30);
+
+console.log(gen.next().value); // 11
+console.log(gen.next().value); // 12
+console.log(gen.next().value); // 21
+console.log(gen.next().value); // 22
+console.log(gen.next().value); // 31
+console.log(gen.next().value); // 32
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function anotherGenerator(i, j) {
+  let __$curriedanotherGenerator = function (i) {
+    return function* (j) {
+      yield i + 1;
+      yield i + 2;
+      yield j + 1;
+      yield j + 2;
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedanotherGenerator = __$curriedanotherGenerator.call(this, arg);
+  }
+
+  if (arguments.length === 0)
+    __$curriedanotherGenerator = __$curriedanotherGenerator.call(
+      this,
+      undefined
+    );
+  return __$curriedanotherGenerator;
+}
+
+function generator(i, j, k) {
+  let __$curriedgenerator = function (i) {
+    return function (j, k) {
+      let __$curriedgenerator = function (j) {
+        return function* (k) {
+          yield* anotherGenerator(i, j);
+          yield k + 1;
+          yield k + 2;
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedgenerator = __$curriedgenerator.call(this, arg);
+      }
+
+      if (arguments.length === 0)
+        __$curriedgenerator = __$curriedgenerator.call(this, undefined);
+      return __$curriedgenerator;
+    };
+  };
+
+  for (const arg of arguments) {
+    __$curriedgenerator = __$curriedgenerator.call(this, arg);
+  }
+
+  if (arguments.length === 0)
+    __$curriedgenerator = __$curriedgenerator.call(this, undefined);
+  return __$curriedgenerator;
+}
+
+const gen = generator(10, 20, 30);
+console.log(gen.next().value); // 11
+
+console.log(gen.next().value); // 12
+
+console.log(gen.next().value); // 21
+
+console.log(gen.next().value); // 22
+
+console.log(gen.next().value); // 31
+
+console.log(gen.next().value); // 32
 
 
 `;

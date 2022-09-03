@@ -13,10 +13,9 @@ import hjsPlugin from '../src';
  *  8. [X] IIFE
  *  9. [X] Variadic functions and rest parameters
  * 10. [X] Async functions
- * 11. Changing scope
- * 14. Ensure scope is respected if it is passed through call, bind and apply.
- * 15. Generator functions
- * 16. Figure out directives
+ * 11. [X] Changing scope
+ * 14. [X] Ensure scope is respected if it is passed through call, bind and apply.
+ * 15. [X] Generator functions
  * 17. Arrow functions within in-built functions
  * 18. Dynamically generated functions
  * 19. How would classes work with this enabled?
@@ -108,5 +107,10 @@ pluginTester({
             fixture: '__fixtures__/preserve-this-test.js',
             snapshot: true,
         },
+        {
+            title: 'generator function',
+            fixture: '__fixtures__/generator-test.js',
+            snapshot: true,
+        }, 
     ]
 });
