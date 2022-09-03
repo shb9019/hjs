@@ -103,5 +103,10 @@ pluginTester({
             fixture: '__fixtures__/async-arrow-test.js',
             snapshot: true,
         },
+        {
+            title: 'function using parent object\'s variables',
+            fixture: '__fixtures__/preserve-this-test.js',
+            snapshot: true,
+        },
     ]
 });

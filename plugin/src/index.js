@@ -141,6 +141,19 @@ export default ({ types: t }) => {
               false
             )
           );
+        } else if (t.isObjectMethod(node)) {
+          path.replaceWith(
+            t.objectMethod(
+              node.kind,
+              node.key,
+              params,
+              curriedBody,
+              node.computed,
+              node.generator,
+              false
+            )
+          );
+
         }
 
         path.skip();
