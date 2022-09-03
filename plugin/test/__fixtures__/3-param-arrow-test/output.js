@@ -17,11 +17,15 @@ const multiplyNumbers = (a, b, c) => {
     };
   };
 
-  for (const arg of arguments) {
+  const args = [];
+  if (a !== undefined) args.push(a);
+  if (b !== undefined) args.push(b);
+  if (c !== undefined) args.push(c);
+
+  for (const arg of args) {
     __$curriedResponse = __$curriedResponse(arg);
   }
 
-  if (arguments.length === 0)
-    __$curriedResponse = __$curriedResponse(undefined);
+  if (args.length === 0) __$curriedResponse = __$curriedResponse(undefined);
   return __$curriedResponse;
 };

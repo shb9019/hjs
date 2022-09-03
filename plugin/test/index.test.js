@@ -11,7 +11,7 @@ import hjsPlugin from '../src';
  * 6. [X] 3 Parameters arrow functions
  * 7. [X] Default parameters
  * 8. [X] IIFE
- * 9. Spread parameters
+ * 9. Variadic functions and rest parameters
  * 10. Async functions
  * 11. Changing scope
  * 12. Optional parameters
@@ -20,6 +20,7 @@ import hjsPlugin from '../src';
  * 15. Generator functions
  * 16. Figure out directives
  * 17. Arrow functions within in-built functions
+ * 18. Dynamically generated functions
  */
 
 pluginTester({
@@ -37,6 +38,10 @@ pluginTester({
         },
         {
             fixture: '__fixtures__/iife-test.js',
+            snapshot: true,
+        },
+        {
+            fixture: '__fixtures__/rest-param-test.js',
             snapshot: true,
         },
     ]

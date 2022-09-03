@@ -10,14 +10,20 @@ const wrapInBlockStatement = (t, body) => {
   }
 }
 
-const generateCurriedBody = (t, {params, body, generator, async}) => {
+const generateCurriedBody = (t, {params, body, generator, async, isArrow}) => {
   if (params.length <= 1) {
     return wrapInBlockStatement(t, body);
   }
 
   // 1. Return Statement
   const currentParameters = 1;
-  const recursiveCurriedBody = generateCurriedBody(t, {params: params.slice(currentParameters), body, generator, async});
+  const recursiveCurriedBody = generateCurriedBody(t, {
+    params: params.slice(currentParameters),
+    body,
+    generator,
+    async,
+    isArrow: false
+  });
   const curriedFE = t.functionExpression(
     null,
     params.slice(currentParameters),
@@ -49,13 +55,30 @@ const generateCurriedBody = (t, {params, body, generator, async}) => {
   );
 
   // 4. For args loop
-  const callCurryCode = `
-  for(const arg of arguments) {
-    ${resultIdName} = ${resultIdName}(arg);
+  let callCurryCode = '';
+  if (isArrow) {
+    // Arrow functions do not have arguments binding.
+    callCurryCode = `const args = [];`;
+    params.forEach((param) => {
+      callCurryCode += `if (${param.name} !== undefined) args.push(${param.name});`;
+    });
+    callCurryCode += `
+    for(const arg of args) {
+        ${resultIdName} = ${resultIdName}(arg);
+      }
+
+      if (args.length === 0) ${resultIdName} = ${resultIdName}(undefined);
+    `;
+  } else {
+    callCurryCode = `
+      for(const arg of arguments) {
+        ${resultIdName} = ${resultIdName}(arg);
+      }
+
+      if (arguments.length === 0) ${resultIdName} = ${resultIdName}(undefined);
+    `;
   }
-  
-  if (arguments.length === 0) ${resultIdName} = ${resultIdName}(undefined);
-  `;
+
   const callCurryBody = parse(callCurryCode).program.body;
   
   // 5. Final return statement.
@@ -84,10 +107,11 @@ export default ({ types: t }) => {
           params,
           body,
           generator: node.generator,
-          async: node.async
+          async: node.async,
+          isArrow: t.isArrowFunctionExpression(node),
         });
 
-        if (t.isFunctionDeclaration(path.node)) {
+        if (t.isFunctionDeclaration(node)) {
           path.replaceWith(
             t.functionDeclaration(
               node.id,
@@ -97,7 +121,7 @@ export default ({ types: t }) => {
               node.async
             )
           );
-        } else if (t.isFunctionExpression(path.node)) {
+        } else if (t.isFunctionExpression(node)) {
           path.replaceWith(
             t.functionExpression(
               node.id,
@@ -107,7 +131,7 @@ export default ({ types: t }) => {
               node.async
             )
           );
-        } else if (t.isArrowFunctionExpression(path.node)) {
+        } else if (t.isArrowFunctionExpression(node)) {
           path.replaceWith(
             t.arrowFunctionExpression(
               params,

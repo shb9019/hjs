@@ -188,3 +188,56 @@ const result = (function (a, b, c) {
 
 
 `;
+
+exports[`unknown plugin 4. unknown plugin: 4. unknown plugin 1`] = `
+
+const multiplyAll = (a, b, ...rest) => {
+  let product = a * b;
+  for (const item of rest) {
+    product = product * item;
+  }
+  return product;
+};
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const multiplyAll = (a, b, ...rest) => {
+  let __$curriedResponse = function (a) {
+    return function (b, ...rest) {
+      let __$curriedResponse = function (b) {
+        return function (...rest) {
+          let product = a * b;
+
+          for (const item of rest) {
+            product = product * item;
+          }
+
+          return product;
+        };
+      };
+
+      for (const arg of arguments) {
+        __$curriedResponse = __$curriedResponse(arg);
+      }
+
+      if (arguments.length === 0)
+        __$curriedResponse = __$curriedResponse(undefined);
+      return __$curriedResponse;
+    };
+  };
+
+  const args = [];
+  if (a !== undefined) args.push(a);
+  if (b !== undefined) args.push(b);
+  if (undefined !== undefined) args.push(undefined);
+
+  for (const arg of args) {
+    __$curriedResponse = __$curriedResponse(arg);
+  }
+
+  if (args.length === 0) __$curriedResponse = __$curriedResponse(undefined);
+  return __$curriedResponse;
+};
+
+
+`;
