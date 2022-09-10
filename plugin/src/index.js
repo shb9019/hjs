@@ -10,7 +10,7 @@ const wrapInBlockStatement = (t, body) => {
   }
 }
 
-const generateCurriedBody = (t, {id, params, body, generator, async, isArrow}) => {
+const generateCurriedBody = (t, {id, params, body, generator, async, isClassMethod}) => {
   if (params.length <= 1) {
     return wrapInBlockStatement(t, body);
   }
@@ -22,8 +22,7 @@ const generateCurriedBody = (t, {id, params, body, generator, async, isArrow}) =
     params: params.slice(currentParameters),
     body,
     generator,
-    async,
-    isArrow: false
+    async
   });
   const curriedFE = t.functionExpression(
     null,
@@ -106,7 +105,7 @@ export default ({ types: t }) => {
           body,
           generator: node.generator,
           async: node.async,
-          isArrow: t.isArrowFunctionExpression(node),
+          isClassMethod: t.isClassMethod(node)
         });
 
         if (t.isFunctionDeclaration(node)) {
@@ -149,7 +148,19 @@ export default ({ types: t }) => {
               false
             )
           );
-
+        } else if (t.isClassMethod(node) && (node.kind !== "constructor")) {
+          path.replaceWith(
+            t.classMethod(
+              node.kind,
+              node.key,
+              params,
+              curriedBody,
+              node.computed,
+              node.static,
+              false,
+              false
+            )
+          );
         }
 
         path.skip();

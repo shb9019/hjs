@@ -419,6 +419,69 @@ await asyncCall(2, 4, 1);
 
 `;
 
+exports[`Base tests basic class with constructor: basic class with constructor 1`] = `
+
+class Rectangle {
+  // Constructor should not be modified
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+
+  getVolume(depth) {
+    return (this.height * this.width * depth);
+  }
+
+  getWeight(depth, density) {
+    return this.getVolume(depth) * density;
+  }
+}
+
+const rectangle = new Rectangle(5, 6);
+rectangle.getWeight(10, 2);
+
+// Class methods must lock the context.
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+class Rectangle {
+  // Constructor should not be modified
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+
+  getVolume(depth) {
+    return this.height * this.width * depth;
+  }
+
+  getWeight(depth, density) {
+    let __$curriedFunc = function (depth) {
+      return function (density) {
+        return this.getVolume(depth) * density;
+      };
+    };
+
+    const args = [];
+    if (depth !== undefined) args.push(depth);
+    if (density !== undefined) args.push(density);
+
+    for (const arg of args) {
+      __$curriedFunc = __$curriedFunc.call(this, arg);
+    }
+
+    if (args.length === 0)
+      __$curriedFunc = __$curriedFunc.call(this, undefined);
+    return __$curriedFunc;
+  }
+}
+
+const rectangle = new Rectangle(5, 6);
+rectangle.getWeight(10, 2); // Class methods must lock the context.
+
+
+`;
+
 exports[`Base tests function built using function constructor: function built using function constructor 1`] = `
 
 const adder = new Function('a', 'b', 'return a + b');

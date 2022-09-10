@@ -43,3 +43,8 @@ I'm going with the first one itself.
 25. This point can lead to weird behavior where `obj.func(1)(2)` will not have obj context. It should instead be called as `obj.func(1, 2)`.
 26. Functions passed to library or in-built methods can take lesser parameters, but never more parameters than what is defined. Exception is variadic functions.
 27. This plugin doesn't support functions built using `new Function` constructor.
+28. Class constructor should not be curried. It's a creation of object. Wrap it inside a function if required.
+29. Class methods must lock the context. Should they? See, class constructors do not need to be curried because they are not functions.
+30. Class methods can be curried because they are methods. But, is there a benefit in letting them lose their context?
+  If you don't preserve context, they would end up having to always call it using bind or apply.
+31. It makes sense to preserve context because it is a method that is specific to a class object.

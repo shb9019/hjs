@@ -17,7 +17,7 @@ import hjsPlugin from '../src';
  * 14. [X] Ensure scope is respected if it is passed through call, bind and apply.
  * 15. [X] Generator functions
  * 17. [X] Arrow functions within in-built functions
- * 18. Dynamically generated functions
+ * 18. [X] Dynamically generated functions
  * 19. How would classes work with this enabled?
  * 20. What happens to class constructors?
  * 21. How does "this" keyword work in such curried functions?
@@ -126,6 +126,11 @@ pluginTester({
         {
             title: 'function built using function constructor',
             fixture: '__fixtures__/function-constr-test.js',
+            snapshot: true,
+        }, 
+        {
+            title: 'basic class with constructor',
+            fixture: '__fixtures__/class-test.js',
             snapshot: true,
         }, 
     ]
