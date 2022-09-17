@@ -18,13 +18,14 @@ import hjsPlugin from '../src';
  * 15. [X] Generator functions
  * 17. [X] Arrow functions within in-built functions
  * 18. [X] Dynamically generated functions
- * 19. How would classes work with this enabled?
- * 20. What happens to class constructors?
- * 21. How does "this" keyword work in such curried functions?
+ * 19. [X] How would classes work with this enabled?
+ * 20. [X] What happens to class constructors?
+ * 21. [X] How does "this" keyword work in such curried functions?
  * 22. Using a function constructor
  * 23. Passing callback functions
  * 24. Javascript decorator functions
  * 25. Arrow functions with spread operator
+ * 26. Default parameters in arrow functions. Support rest parameter syntax
  */
 
 pluginTester({
@@ -131,6 +132,16 @@ pluginTester({
         {
             title: 'basic class with constructor',
             fixture: '__fixtures__/class-test.js',
+            snapshot: true,
+        }, 
+        {
+            title: 'basic object function referring to object variables',
+            fixture: '__fixtures__/obj-context-test.js',
+            snapshot: true,
+        },
+        {
+            title: 'basic function prototype',
+            fixture: '__fixtures__/function-prototype-test.js',
             snapshot: true,
         }, 
     ]

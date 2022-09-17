@@ -15,3 +15,6 @@ function groupBy(objectArray, property) {
 
 const groupedPeople = groupBy(people, 'age');
 console.log(groupedPeople);
+
+const groupedPeople2 = groupBy(people)('age');
+console.log(groupedPeople2);

@@ -1,4 +1,5 @@
 function withDefaults(a, b, c = 1, d = 2, e = 3) {
+  console.log([a, b, c, d, e]);
   return [a, b, c, d, e];
 }
 

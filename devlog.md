@@ -48,3 +48,7 @@ I'm going with the first one itself.
 30. Class methods can be curried because they are methods. But, is there a benefit in letting them lose their context?
   If you don't preserve context, they would end up having to always call it using bind or apply.
 31. It makes sense to preserve context because it is a method that is specific to a class object.
+32. How do I allow users to also be able to override context by using call, apply and bind? These functions only
+  change the value of "this". I have to somehow refer to "this" at nested function expressions. I cannot replace
+  it with "that". Will nested "bind" of this work? 
+33. Defining feature is that the first creation of curried function will bind the 'this' context. Irrespective of context.

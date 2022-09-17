@@ -10,7 +10,7 @@ const wrapInBlockStatement = (t, body) => {
   }
 }
 
-const generateCurriedBody = (t, {id, params, body, generator, async, isClassMethod}) => {
+const generateCurriedBody = (t, {id, params, body, generator, async}) => {
   if (params.length <= 1) {
     return wrapInBlockStatement(t, body);
   }
@@ -31,7 +31,9 @@ const generateCurriedBody = (t, {id, params, body, generator, async, isClassMeth
     (params.length <= 2) ? generator : false,
     (params.length <= 2) ? async : false
   );
-  const curriedReturn = t.returnStatement(curriedFE);
+  const curriedMemberExpression = t.memberExpression(curriedFE, t.identifier("bind"), false, false);
+  const curriedCallExpression = t.callExpression(curriedMemberExpression, [t.thisExpression()]);
+  const curriedReturn = t.returnStatement(curriedCallExpression);
   const curriedBody = t.blockStatement([curriedReturn], []);
 
   // 2. Function Expression
@@ -42,12 +44,14 @@ const generateCurriedBody = (t, {id, params, body, generator, async, isClassMeth
     false,
     false
   );
+  const responseMemberExpression = t.memberExpression(responseFE, t.identifier("bind"), false, false);
+  const responseCallExpression = t.callExpression(responseMemberExpression, [t.thisExpression()]);
 
   // 3. Variable declaration
   const resultIdName = `__$curried${id ? id.name : "Func"}`;
   const responseVD = t.variableDeclarator(
     t.identifier(resultIdName),
-    responseFE
+    responseCallExpression
   );
   const responseDecl = t.variableDeclaration(
     "let",
@@ -68,11 +72,14 @@ const generateCurriedBody = (t, {id, params, body, generator, async, isClassMeth
     callCurryCode += `if (${parameterName} !== undefined) args.push(${parameterName});`;
   });
   callCurryCode += `
-    for(const arg of args) {
-      ${resultIdName} = ${resultIdName}.call(this, arg);
+    for (let i = 0; i < args.length; i++) {
+      if (arguments && (arguments.length <= i) && (i != 0)) break;
+      const arg = args[i];
+      if (arg === undefined) ${resultIdName} = ${resultIdName}();
+      else ${resultIdName} = ${resultIdName}(arg);
     }
 
-    if (args.length === 0) ${resultIdName} = ${resultIdName}.call(this, undefined);
+    if (args.length === 0) ${resultIdName} = ${resultIdName}();
   `;
 
   const callCurryBody = parse(callCurryCode).program.body;
@@ -104,8 +111,7 @@ export default ({ types: t }) => {
           params,
           body,
           generator: node.generator,
-          async: node.async,
-          isClassMethod: t.isClassMethod(node)
+          async: node.async
         });
 
         if (t.isFunctionDeclaration(node)) {

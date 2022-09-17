@@ -1,5 +1,5 @@
 const multiplyNumbers = function (a, b, c) {
-  return a * b * c;
+  console.log(a * b * c);
 };
 
 multiplyNumbers(1)(2)(3);
