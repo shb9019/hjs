@@ -24,7 +24,7 @@ import hjsPlugin from '../src';
  * 22. [X] Using a function constructor
  * 23. Passing callback functions
  * 24. Arrow functions with spread operator
- * 25. Default parameters in arrow functions. Support rest parameter syntax
+ * 25. Default parameters in arrow functions. Use rest parameter syntax [UNSUPPORTED]
  */
 
  pluginTester({
@@ -137,6 +137,11 @@ pluginTester({
         {
             title: 'function built using function constructor',
             fixture: '__fixtures__/function-constr-test.js',
+            snapshot: true,
+        },
+        {
+            title: 'callback function passed to settimeout',
+            fixture: '__fixtures__/callback-func-test.js',
             snapshot: true,
         }, 
     ],

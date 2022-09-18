@@ -1349,6 +1349,65 @@ console.log(result2);
 
 `;
 
+exports[`Special Function tests callback function passed to settimeout: callback function passed to settimeout 1`] = `
+
+function showValueInElement(element, val) {
+  element.show(val);
+}
+
+const el1 = {
+  show: (val) => console.log(100 * val),
+};
+const callback1 = showValueInElement(el1);
+
+const el2 = {
+  show: (val) => console.log(1000 + val),
+};
+const callback2 = showValueInElement(el2);
+
+setTimeout(() => callback1(20), 1000);
+setTimeout(() => callback1(50), 1000);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function showValueInElement(element, val) {
+  let __$curriedshowValueInElement = function (element) {
+    return function (val) {
+      element.show(val);
+    }.bind(this);
+  }.bind(this);
+
+  const args = [];
+  if (element !== undefined) args.push(element);
+  if (val !== undefined) args.push(val);
+
+  for (let i = 0; i < args.length; i++) {
+    if (arguments && arguments.length <= i && i != 0) break;
+    const arg = args[i];
+    if (arg === undefined)
+      __$curriedshowValueInElement = __$curriedshowValueInElement();
+    else __$curriedshowValueInElement = __$curriedshowValueInElement(arg);
+  }
+
+  if (args.length === 0)
+    __$curriedshowValueInElement = __$curriedshowValueInElement();
+  return __$curriedshowValueInElement;
+}
+
+const el1 = {
+  show: (val) => console.log(100 * val),
+};
+const callback1 = showValueInElement(el1);
+const el2 = {
+  show: (val) => console.log(1000 + val),
+};
+const callback2 = showValueInElement(el2);
+setTimeout(() => callback1(20), 1000);
+setTimeout(() => callback1(50), 1000);
+
+
+`;
+
 exports[`Special Function tests function built using function constructor: function built using function constructor 1`] = `
 
 const adder = new Function('a', 'b', 'return a + b');
