@@ -1,4 +1,4 @@
 {
   "presets": ["@babel/preset-env"],
-  "plugins": ["../plugin/dist/index.js"]
+  "plugins": ["babel-plugin-super-function-js"]
 }
