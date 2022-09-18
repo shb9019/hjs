@@ -1,4 +1,3 @@
-import traverse from "@babel/traverse";
 import generateCurriedBody from "./generateCurriedBody";
 
 let visitor = () => {};
@@ -7,7 +6,7 @@ const getCurriedBodyFromPath = (path, t) => {
   const {node} = path;
 
   const {id, params, body} = node;
-  traverse(body, visitor(t), path.scope, path);
+  path.traverse(visitor(t));
   const curriedBody = generateCurriedBody(t, {
     id,
     params,

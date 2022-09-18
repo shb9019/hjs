@@ -1,16 +1,24 @@
 {
-  "name": "test-plugin",
-  "version": "1.0.0",
-  "description": "",
-  "main": "test-plugin.js",
+  "name": "babel-plugin-super-function-js",
+  "version": "0.1.0",
+  "description": "Babel plugin to super power your functions!",
+  "main": "dist/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shb9019/super-function-js.git"
+  },
   "scripts": {
-    "compile": "babel -d dist/ src/",
+    "build": "rm -fr ./dist && NODE_ENV=production babel ./src --out-dir ./dist --source-maps --copy-files",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Sai Hemanth B",
+    "email": "saihemanth.nitt@gmail.com",
+    "url": "https://www.saihemanth.com/"
+  },
+  "license": "MIT",
   "devDependencies": {
     "@babel/cli": "^7.18.10",
     "@babel/generator": "^7.18.13",

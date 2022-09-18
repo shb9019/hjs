@@ -55,3 +55,5 @@ I'm going with the first one itself.
 34. I've refactored the code and moved stuff around with comments.
 35. One thing I missed is nested functions with multiple parameters. Such nested functions will not be processed since we're skipping.
 36. The above thing is simply solved using a recursive call to the visitor in the correct order.
+37. I want to be able to return a function that preserves the parameters it accepts. Bind denies me from doing this. I don't think there is a choice right now. Need to fix later.
+38. You should also ensure at least one parameter is always utilized.
