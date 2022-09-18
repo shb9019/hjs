@@ -22,8 +22,8 @@ import hjsPlugin from '../src';
  * 20. [X] What happens to class constructors?
  * 21. [X] How does "this" keyword work in such curried functions?
  * 22. [X] Using a function constructor
- * 23. Passing callback functions
- * 24. Arrow functions with spread operator
+ * 23. [X] Passing callback functions
+ * 24. [X] Arrow functions with spread operator
  * 25. Default parameters in arrow functions. Use rest parameter syntax [UNSUPPORTED]
  */
 
@@ -52,6 +52,11 @@ import hjsPlugin from '../src';
         {
             title: 'nested functions',
             fixture: '__fixtures__/nested-func-test.js',
+            snapshot: true,
+        },
+        {
+            title: 'complex nested functions',
+            fixture: '__fixtures__/complex-nested-func-test.js',
             snapshot: true,
         },
     ]
@@ -190,7 +195,7 @@ pluginTester({
     fixtures: path.join(__dirname, '__fixtures__'),
     tests: [
         {
-            title: 'with one rest parameters field',
+            title: 'Function rest parameters field',
             fixture: '__fixtures__/rest-param-test.js',
             snapshot: true,
         },
