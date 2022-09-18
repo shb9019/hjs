@@ -1,17 +1,6 @@
+import calculator from './calculator.sf';
+
 function component() {
-
-  function calculator(op, a, b) {
-    if (op == '+') {
-      return a + b;
-    } else if (op == '-') {
-      return a - b;
-    } else if (op == '*') {
-      return a * b;
-    } else {
-      return -1;
-    }
-  }
-
   const element = document.createElement('div');
   const adder = calculator('+');
   const subtractor = calculator('-');

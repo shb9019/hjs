@@ -6,7 +6,14 @@ Babel plugin to give super powers to your JavaScript functions. Inspired by func
 
 ## Usage
 1. Install plugin: `npm install --save-dev babel-plugin-super-function-js`
-2. Add plugin to your .babelrc file: `"plugins": ["babel-plugin-super-function-js"]`
+2. Add the following plugin to your .babelrc file,
+```json
+  "overrides": [{
+    "test": "**/*.sf.js",
+    "plugins": ["babel-plugin-super-function-js"]
+  }]
+```
+3. Super function will now transform all functions from files with ".sf.js" extension!
 
 ## Features
 ### Curried Functions Everywhere!!
