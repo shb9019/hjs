@@ -52,3 +52,6 @@ I'm going with the first one itself.
   change the value of "this". I have to somehow refer to "this" at nested function expressions. I cannot replace
   it with "that". Will nested "bind" of this work? 
 33. Defining feature is that the first creation of curried function will bind the 'this' context. Irrespective of context.
+34. I've refactored the code and moved stuff around with comments.
+35. One thing I missed is nested functions with multiple parameters. Such nested functions will not be processed since we're skipping.
+36. The above thing is simply solved using a recursive call to the visitor in the correct order.

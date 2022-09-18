@@ -518,7 +518,48 @@ function complexOuter(a, b) {
   let __$curriedcomplexOuter = function (a) {
     return function (b) {
       function complexInner(c, d, e) {
-        return a + b + c + d + e;
+        let __$curriedcomplexInner = function (c) {
+          return function (d, e) {
+            let __$curriedcomplexInner = function (d) {
+              return function (e) {
+                return a + b + c + d + e;
+              }.bind(this);
+            }.bind(this);
+
+            const args = [];
+            if (d !== undefined) args.push(d);
+            if (e !== undefined) args.push(e);
+
+            for (let i = 0; i < args.length; i++) {
+              if (arguments && arguments.length <= i && i != 0) break;
+              const arg = args[i];
+              if (arg === undefined)
+                __$curriedcomplexInner = __$curriedcomplexInner();
+              else __$curriedcomplexInner = __$curriedcomplexInner(arg);
+            }
+
+            if (args.length === 0)
+              __$curriedcomplexInner = __$curriedcomplexInner();
+            return __$curriedcomplexInner;
+          }.bind(this);
+        }.bind(this);
+
+        const args = [];
+        if (c !== undefined) args.push(c);
+        if (d !== undefined) args.push(d);
+        if (e !== undefined) args.push(e);
+
+        for (let i = 0; i < args.length; i++) {
+          if (arguments && arguments.length <= i && i != 0) break;
+          const arg = args[i];
+          if (arg === undefined)
+            __$curriedcomplexInner = __$curriedcomplexInner();
+          else __$curriedcomplexInner = __$curriedcomplexInner(arg);
+        }
+
+        if (args.length === 0)
+          __$curriedcomplexInner = __$curriedcomplexInner();
+        return __$curriedcomplexInner;
       }
 
       return complexInner;
@@ -1519,10 +1560,28 @@ function groupBy(objectArray, property) {
   let __$curriedgroupBy = function (objectArray) {
     return function (property) {
       return objectArray.reduce(function (acc, obj) {
-        const key = obj[property];
-        acc[key] ??= [];
-        acc[key].push(obj);
-        return acc;
+        let __$curriedFunc = function (acc) {
+          return function (obj) {
+            const key = obj[property];
+            acc[key] ??= [];
+            acc[key].push(obj);
+            return acc;
+          }.bind(this);
+        }.bind(this);
+
+        const args = [];
+        if (acc !== undefined) args.push(acc);
+        if (obj !== undefined) args.push(obj);
+
+        for (let i = 0; i < args.length; i++) {
+          if (arguments && arguments.length <= i && i != 0) break;
+          const arg = args[i];
+          if (arg === undefined) __$curriedFunc = __$curriedFunc();
+          else __$curriedFunc = __$curriedFunc(arg);
+        }
+
+        if (args.length === 0) __$curriedFunc = __$curriedFunc();
+        return __$curriedFunc;
       }, {});
     }.bind(this);
   }.bind(this);
