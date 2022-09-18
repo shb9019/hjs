@@ -1,211 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Base tests anonymous function expression with 3 parameters: anonymous function expression with 3 parameters 1`] = `
-
-const multiplyNumbers = function (a, b, c) {
-  console.log(a * b * c);
-};
-
-multiplyNumbers(1)(2)(3);
-multiplyNumbers(1)(2, 3);
-multiplyNumbers(1, 2, 3);
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const multiplyNumbers = function (a, b, c) {
-  let __$curriedFunc = function (a) {
-    return function (b, c) {
-      let __$curriedFunc = function (b) {
-        return function (c) {
-          console.log(a * b * c);
-        }.bind(this);
-      }.bind(this);
-
-      const args = [];
-      if (b !== undefined) args.push(b);
-      if (c !== undefined) args.push(c);
-
-      for (let i = 0; i < args.length; i++) {
-        if (arguments && arguments.length <= i && i != 0) break;
-        const arg = args[i];
-        if (arg === undefined) __$curriedFunc = __$curriedFunc();
-        else __$curriedFunc = __$curriedFunc(arg);
-      }
-
-      if (args.length === 0) __$curriedFunc = __$curriedFunc();
-      return __$curriedFunc;
-    }.bind(this);
-  }.bind(this);
-
-  const args = [];
-  if (a !== undefined) args.push(a);
-  if (b !== undefined) args.push(b);
-  if (c !== undefined) args.push(c);
-
-  for (let i = 0; i < args.length; i++) {
-    if (arguments && arguments.length <= i && i != 0) break;
-    const arg = args[i];
-    if (arg === undefined) __$curriedFunc = __$curriedFunc();
-    else __$curriedFunc = __$curriedFunc(arg);
-  }
-
-  if (args.length === 0) __$curriedFunc = __$curriedFunc();
-  return __$curriedFunc;
-};
-
-multiplyNumbers(1)(2)(3);
-multiplyNumbers(1)(2, 3);
-multiplyNumbers(1, 2, 3);
-
-
-`;
-
-exports[`Base tests arrow function expression with 3 parameters: arrow function expression with 3 parameters 1`] = `
-
-const multiplyNumbers = (a, b, c) => console.log(a * b * c);
-
-multiplyNumbers(1)(2)(3);
-multiplyNumbers(1)(2, 3);
-multiplyNumbers(1, 2, 3);
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const multiplyNumbers = (a, b, c) => {
-  let __$curriedFunc = function (a) {
-    return function (b, c) {
-      let __$curriedFunc = function (b) {
-        return function (c) {
-          return console.log(a * b * c);
-        }.bind(this);
-      }.bind(this);
-
-      const args = [];
-      if (b !== undefined) args.push(b);
-      if (c !== undefined) args.push(c);
-
-      for (let i = 0; i < args.length; i++) {
-        if (arguments && arguments.length <= i && i != 0) break;
-        const arg = args[i];
-        if (arg === undefined) __$curriedFunc = __$curriedFunc();
-        else __$curriedFunc = __$curriedFunc(arg);
-      }
-
-      if (args.length === 0) __$curriedFunc = __$curriedFunc();
-      return __$curriedFunc;
-    }.bind(this);
-  }.bind(this);
-
-  const args = [];
-  if (a !== undefined) args.push(a);
-  if (b !== undefined) args.push(b);
-  if (c !== undefined) args.push(c);
-
-  for (let i = 0; i < args.length; i++) {
-    if (arguments && arguments.length <= i && i != 0) break;
-    const arg = args[i];
-    if (arg === undefined) __$curriedFunc = __$curriedFunc();
-    else __$curriedFunc = __$curriedFunc(arg);
-  }
-
-  if (args.length === 0) __$curriedFunc = __$curriedFunc();
-  return __$curriedFunc;
-};
-
-multiplyNumbers(1)(2)(3);
-multiplyNumbers(1)(2, 3);
-multiplyNumbers(1, 2, 3);
-
-
-`;
-
-exports[`Base tests arrow function passed to array built-in method: arrow function passed to array built-in method 1`] = `
-
-const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-
-const result1 = words.filter((word, index) => (word.length > 6) && (index <= 4));
-console.log(result1);
-
-const result2 = words.filter((word, index, arr) => (word.length > 6) && (index <= 4));
-console.log(result2);
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const words = [
-  "spray",
-  "limit",
-  "elite",
-  "exuberant",
-  "destruction",
-  "present",
-];
-const result1 = words.filter((word, index) => {
-  let __$curriedFunc = function (word) {
-    return function (index) {
-      return word.length > 6 && index <= 4;
-    }.bind(this);
-  }.bind(this);
-
-  const args = [];
-  if (word !== undefined) args.push(word);
-  if (index !== undefined) args.push(index);
-
-  for (let i = 0; i < args.length; i++) {
-    if (arguments && arguments.length <= i && i != 0) break;
-    const arg = args[i];
-    if (arg === undefined) __$curriedFunc = __$curriedFunc();
-    else __$curriedFunc = __$curriedFunc(arg);
-  }
-
-  if (args.length === 0) __$curriedFunc = __$curriedFunc();
-  return __$curriedFunc;
-});
-console.log(result1);
-const result2 = words.filter((word, index, arr) => {
-  let __$curriedFunc = function (word) {
-    return function (index, arr) {
-      let __$curriedFunc = function (index) {
-        return function (arr) {
-          return word.length > 6 && index <= 4;
-        }.bind(this);
-      }.bind(this);
-
-      const args = [];
-      if (index !== undefined) args.push(index);
-      if (arr !== undefined) args.push(arr);
-
-      for (let i = 0; i < args.length; i++) {
-        if (arguments && arguments.length <= i && i != 0) break;
-        const arg = args[i];
-        if (arg === undefined) __$curriedFunc = __$curriedFunc();
-        else __$curriedFunc = __$curriedFunc(arg);
-      }
-
-      if (args.length === 0) __$curriedFunc = __$curriedFunc();
-      return __$curriedFunc;
-    }.bind(this);
-  }.bind(this);
-
-  const args = [];
-  if (word !== undefined) args.push(word);
-  if (index !== undefined) args.push(index);
-  if (arr !== undefined) args.push(arr);
-
-  for (let i = 0; i < args.length; i++) {
-    if (arguments && arguments.length <= i && i != 0) break;
-    const arg = args[i];
-    if (arg === undefined) __$curriedFunc = __$curriedFunc();
-    else __$curriedFunc = __$curriedFunc(arg);
-  }
-
-  if (args.length === 0) __$curriedFunc = __$curriedFunc();
-  return __$curriedFunc;
-});
-console.log(result2);
-
-
-`;
-
-exports[`Base tests async arrow function expression: async arrow function expression 1`] = `
+exports[`Async Function tests async arrow function expression: async arrow function expression 1`] = `
 
 const resolveAfterKSeconds = (k) => {
   return new Promise(resolve => {
@@ -287,7 +82,7 @@ await asyncCall(2, 4, 1);
 
 `;
 
-exports[`Base tests async function declaration: async function declaration 1`] = `
+exports[`Async Function tests async function declaration: async function declaration 1`] = `
 
 function resolveAfterKSeconds(k) {
   return new Promise(resolve => {
@@ -369,7 +164,7 @@ await asyncCall(2, 4, 1);
 
 `;
 
-exports[`Base tests async function expression: async function expression 1`] = `
+exports[`Async Function tests async function expression: async function expression 1`] = `
 
 function resolveAfterKSeconds(k) {
   return new Promise(resolve => {
@@ -451,7 +246,414 @@ await asyncCall(2, 4, 1);
 
 `;
 
-exports[`Base tests basic class with constructor: basic class with constructor 1`] = `
+exports[`Basic Function Expression tests anonymous function expression with 3 parameters: anonymous function expression with 3 parameters 1`] = `
+
+const multiplyNumbers = function (a, b, c) {
+  console.log(a * b * c);
+};
+
+multiplyNumbers(1)(2)(3);
+multiplyNumbers(1)(2, 3);
+multiplyNumbers(1, 2, 3);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const multiplyNumbers = function (a, b, c) {
+  let __$curriedFunc = function (a) {
+    return function (b, c) {
+      let __$curriedFunc = function (b) {
+        return function (c) {
+          console.log(a * b * c);
+        }.bind(this);
+      }.bind(this);
+
+      const args = [];
+      if (b !== undefined) args.push(b);
+      if (c !== undefined) args.push(c);
+
+      for (let i = 0; i < args.length; i++) {
+        if (arguments && arguments.length <= i && i != 0) break;
+        const arg = args[i];
+        if (arg === undefined) __$curriedFunc = __$curriedFunc();
+        else __$curriedFunc = __$curriedFunc(arg);
+      }
+
+      if (args.length === 0) __$curriedFunc = __$curriedFunc();
+      return __$curriedFunc;
+    }.bind(this);
+  }.bind(this);
+
+  const args = [];
+  if (a !== undefined) args.push(a);
+  if (b !== undefined) args.push(b);
+  if (c !== undefined) args.push(c);
+
+  for (let i = 0; i < args.length; i++) {
+    if (arguments && arguments.length <= i && i != 0) break;
+    const arg = args[i];
+    if (arg === undefined) __$curriedFunc = __$curriedFunc();
+    else __$curriedFunc = __$curriedFunc(arg);
+  }
+
+  if (args.length === 0) __$curriedFunc = __$curriedFunc();
+  return __$curriedFunc;
+};
+
+multiplyNumbers(1)(2)(3);
+multiplyNumbers(1)(2, 3);
+multiplyNumbers(1, 2, 3);
+
+
+`;
+
+exports[`Basic Function Expression tests arrow function expression with 3 parameters: arrow function expression with 3 parameters 1`] = `
+
+const multiplyNumbers = (a, b, c) => console.log(a * b * c);
+
+multiplyNumbers(1)(2)(3);
+multiplyNumbers(1)(2, 3);
+multiplyNumbers(1, 2, 3);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const multiplyNumbers = (a, b, c) => {
+  let __$curriedFunc = function (a) {
+    return function (b, c) {
+      let __$curriedFunc = function (b) {
+        return function (c) {
+          return console.log(a * b * c);
+        }.bind(this);
+      }.bind(this);
+
+      const args = [];
+      if (b !== undefined) args.push(b);
+      if (c !== undefined) args.push(c);
+
+      for (let i = 0; i < args.length; i++) {
+        if (arguments && arguments.length <= i && i != 0) break;
+        const arg = args[i];
+        if (arg === undefined) __$curriedFunc = __$curriedFunc();
+        else __$curriedFunc = __$curriedFunc(arg);
+      }
+
+      if (args.length === 0) __$curriedFunc = __$curriedFunc();
+      return __$curriedFunc;
+    }.bind(this);
+  }.bind(this);
+
+  const args = [];
+  if (a !== undefined) args.push(a);
+  if (b !== undefined) args.push(b);
+  if (c !== undefined) args.push(c);
+
+  for (let i = 0; i < args.length; i++) {
+    if (arguments && arguments.length <= i && i != 0) break;
+    const arg = args[i];
+    if (arg === undefined) __$curriedFunc = __$curriedFunc();
+    else __$curriedFunc = __$curriedFunc(arg);
+  }
+
+  if (args.length === 0) __$curriedFunc = __$curriedFunc();
+  return __$curriedFunc;
+};
+
+multiplyNumbers(1)(2)(3);
+multiplyNumbers(1)(2, 3);
+multiplyNumbers(1, 2, 3);
+
+
+`;
+
+exports[`Basic Function Expression tests iife: iife 1`] = `
+
+const result = (function (a, b, c) {
+  return a + b + c;
+})(1, 2)(3);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const result = (function (a, b, c) {
+  let __$curriedFunc = function (a) {
+    return function (b, c) {
+      let __$curriedFunc = function (b) {
+        return function (c) {
+          return a + b + c;
+        }.bind(this);
+      }.bind(this);
+
+      const args = [];
+      if (b !== undefined) args.push(b);
+      if (c !== undefined) args.push(c);
+
+      for (let i = 0; i < args.length; i++) {
+        if (arguments && arguments.length <= i && i != 0) break;
+        const arg = args[i];
+        if (arg === undefined) __$curriedFunc = __$curriedFunc();
+        else __$curriedFunc = __$curriedFunc(arg);
+      }
+
+      if (args.length === 0) __$curriedFunc = __$curriedFunc();
+      return __$curriedFunc;
+    }.bind(this);
+  }.bind(this);
+
+  const args = [];
+  if (a !== undefined) args.push(a);
+  if (b !== undefined) args.push(b);
+  if (c !== undefined) args.push(c);
+
+  for (let i = 0; i < args.length; i++) {
+    if (arguments && arguments.length <= i && i != 0) break;
+    const arg = args[i];
+    if (arg === undefined) __$curriedFunc = __$curriedFunc();
+    else __$curriedFunc = __$curriedFunc(arg);
+  }
+
+  if (args.length === 0) __$curriedFunc = __$curriedFunc();
+  return __$curriedFunc;
+})(
+  1,
+  2
+)(3);
+
+
+`;
+
+exports[`Basic Function Expression tests named function expression with 3 parameters: named function expression with 3 parameters 1`] = `
+
+let counter = 0;
+
+const multiplyNumbers = function multiply (a, b, c) {
+  if (counter == 0) {
+    counter++;
+    console.log(multiply(a, b, c));
+  }
+
+  console.log(a * b * c);
+  return a * b * c;
+};
+
+multiplyNumbers(1)(2)(3);
+multiplyNumbers(1)(2, 3);
+multiplyNumbers(1, 2, 3);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+let counter = 0;
+
+const multiplyNumbers = function multiply(a, b, c) {
+  let __$curriedmultiply = function (a) {
+    return function (b, c) {
+      let __$curriedmultiply = function (b) {
+        return function (c) {
+          if (counter == 0) {
+            counter++;
+            console.log(multiply(a, b, c));
+          }
+
+          console.log(a * b * c);
+          return a * b * c;
+        }.bind(this);
+      }.bind(this);
+
+      const args = [];
+      if (b !== undefined) args.push(b);
+      if (c !== undefined) args.push(c);
+
+      for (let i = 0; i < args.length; i++) {
+        if (arguments && arguments.length <= i && i != 0) break;
+        const arg = args[i];
+        if (arg === undefined) __$curriedmultiply = __$curriedmultiply();
+        else __$curriedmultiply = __$curriedmultiply(arg);
+      }
+
+      if (args.length === 0) __$curriedmultiply = __$curriedmultiply();
+      return __$curriedmultiply;
+    }.bind(this);
+  }.bind(this);
+
+  const args = [];
+  if (a !== undefined) args.push(a);
+  if (b !== undefined) args.push(b);
+  if (c !== undefined) args.push(c);
+
+  for (let i = 0; i < args.length; i++) {
+    if (arguments && arguments.length <= i && i != 0) break;
+    const arg = args[i];
+    if (arg === undefined) __$curriedmultiply = __$curriedmultiply();
+    else __$curriedmultiply = __$curriedmultiply(arg);
+  }
+
+  if (args.length === 0) __$curriedmultiply = __$curriedmultiply();
+  return __$curriedmultiply;
+};
+
+multiplyNumbers(1)(2)(3);
+multiplyNumbers(1)(2, 3);
+multiplyNumbers(1, 2, 3);
+
+
+`;
+
+exports[`Basic Function tests function declaration with 2 parameters: function declaration with 2 parameters 1`] = `
+
+function showMessage(from, text) {
+  alert(from + ": " + text);
+}
+
+showMessage("Sai")("Hello World");
+showMessage("Sai", "Hello World");
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function showMessage(from, text) {
+  let __$curriedshowMessage = function (from) {
+    return function (text) {
+      alert(from + ": " + text);
+    }.bind(this);
+  }.bind(this);
+
+  const args = [];
+  if (from !== undefined) args.push(from);
+  if (text !== undefined) args.push(text);
+
+  for (let i = 0; i < args.length; i++) {
+    if (arguments && arguments.length <= i && i != 0) break;
+    const arg = args[i];
+    if (arg === undefined) __$curriedshowMessage = __$curriedshowMessage();
+    else __$curriedshowMessage = __$curriedshowMessage(arg);
+  }
+
+  if (args.length === 0) __$curriedshowMessage = __$curriedshowMessage();
+  return __$curriedshowMessage;
+}
+
+showMessage("Sai")("Hello World");
+showMessage("Sai", "Hello World");
+
+
+`;
+
+exports[`Basic Function tests function declaration with 3 parameters: function declaration with 3 parameters 1`] = `
+
+function addNumbers(a, b, c) {
+  console.log(a + b + c);
+  return a + b + c;
+}
+
+addNumbers(5)(6)(2);
+addNumbers(5)(6, 2);
+addNumbers(5, 6, 2);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function addNumbers(a, b, c) {
+  let __$curriedaddNumbers = function (a) {
+    return function (b, c) {
+      let __$curriedaddNumbers = function (b) {
+        return function (c) {
+          console.log(a + b + c);
+          return a + b + c;
+        }.bind(this);
+      }.bind(this);
+
+      const args = [];
+      if (b !== undefined) args.push(b);
+      if (c !== undefined) args.push(c);
+
+      for (let i = 0; i < args.length; i++) {
+        if (arguments && arguments.length <= i && i != 0) break;
+        const arg = args[i];
+        if (arg === undefined) __$curriedaddNumbers = __$curriedaddNumbers();
+        else __$curriedaddNumbers = __$curriedaddNumbers(arg);
+      }
+
+      if (args.length === 0) __$curriedaddNumbers = __$curriedaddNumbers();
+      return __$curriedaddNumbers;
+    }.bind(this);
+  }.bind(this);
+
+  const args = [];
+  if (a !== undefined) args.push(a);
+  if (b !== undefined) args.push(b);
+  if (c !== undefined) args.push(c);
+
+  for (let i = 0; i < args.length; i++) {
+    if (arguments && arguments.length <= i && i != 0) break;
+    const arg = args[i];
+    if (arg === undefined) __$curriedaddNumbers = __$curriedaddNumbers();
+    else __$curriedaddNumbers = __$curriedaddNumbers(arg);
+  }
+
+  if (args.length === 0) __$curriedaddNumbers = __$curriedaddNumbers();
+  return __$curriedaddNumbers;
+}
+
+addNumbers(5)(6)(2);
+addNumbers(5)(6, 2);
+addNumbers(5, 6, 2);
+
+
+`;
+
+exports[`Basic Function tests function with no params: function with no params 1`] = `
+
+function showMessage() {
+  alert("Hello everyone");
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function showMessage() {
+  alert("Hello everyone");
+}
+
+
+`;
+
+exports[`Basic Function tests nested functions: nested functions 1`] = `
+
+function addSquares(a, b) {
+  function square(x) {
+    console.log(x * x);
+    return x * x;
+  }
+  return square(a) + square(b);
+}
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function addSquares(a, b) {
+  let __$curriedaddSquares = function (a) {
+    return function (b) {
+      function square(x) {
+        console.log(x * x);
+        return x * x;
+      }
+
+      return square(a) + square(b);
+    }.bind(this);
+  }.bind(this);
+
+  const args = [];
+  if (a !== undefined) args.push(a);
+  if (b !== undefined) args.push(b);
+
+  for (let i = 0; i < args.length; i++) {
+    if (arguments && arguments.length <= i && i != 0) break;
+    const arg = args[i];
+    if (arg === undefined) __$curriedaddSquares = __$curriedaddSquares();
+    else __$curriedaddSquares = __$curriedaddSquares(arg);
+  }
+
+  if (args.length === 0) __$curriedaddSquares = __$curriedaddSquares();
+  return __$curriedaddSquares;
+}
+
+
+`;
+
+exports[`Class tests basic class with constructor: basic class with constructor 1`] = `
 
 class Rectangle {
   // Constructor should not be modified
@@ -516,7 +718,7 @@ console.log(rectangle.getWeight(10)(2));
 
 `;
 
-exports[`Base tests basic function prototype: basic function prototype 1`] = `
+exports[`Class tests basic function prototype: basic function prototype 1`] = `
 
 function Animal (name, energy) {
   let animal = Object.create(Animal.prototype);
@@ -597,7 +799,7 @@ snoop.play(5);
 
 `;
 
-exports[`Base tests basic object function referring to object variables: basic object function referring to object variables 1`] = `
+exports[`Class tests basic object function referring to object variables: basic object function referring to object variables 1`] = `
 
 const salary = {
   bonus: 1000,
@@ -644,578 +846,7 @@ console.log(salary.amountToPay(10000)(2000));
 
 `;
 
-exports[`Base tests function built using function constructor: function built using function constructor 1`] = `
-
-const adder = new Function('a', 'b', 'return a + b');
-console.log(adder(2, 6));
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const adder = new Function("a", "b", "return a + b");
-console.log(adder(2, 6));
-
-
-`;
-
-exports[`Base tests function declaration with 2 parameters: function declaration with 2 parameters 1`] = `
-
-function showMessage(from, text) {
-  alert(from + ": " + text);
-}
-
-showMessage("Sai")("Hello World");
-showMessage("Sai", "Hello World");
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-function showMessage(from, text) {
-  let __$curriedshowMessage = function (from) {
-    return function (text) {
-      alert(from + ": " + text);
-    }.bind(this);
-  }.bind(this);
-
-  const args = [];
-  if (from !== undefined) args.push(from);
-  if (text !== undefined) args.push(text);
-
-  for (let i = 0; i < args.length; i++) {
-    if (arguments && arguments.length <= i && i != 0) break;
-    const arg = args[i];
-    if (arg === undefined) __$curriedshowMessage = __$curriedshowMessage();
-    else __$curriedshowMessage = __$curriedshowMessage(arg);
-  }
-
-  if (args.length === 0) __$curriedshowMessage = __$curriedshowMessage();
-  return __$curriedshowMessage;
-}
-
-showMessage("Sai")("Hello World");
-showMessage("Sai", "Hello World");
-
-
-`;
-
-exports[`Base tests function declaration with 3 parameters: function declaration with 3 parameters 1`] = `
-
-function addNumbers(a, b, c) {
-  console.log(a + b + c);
-  return a + b + c;
-}
-
-addNumbers(5)(6)(2);
-addNumbers(5)(6, 2);
-addNumbers(5, 6, 2);
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-function addNumbers(a, b, c) {
-  let __$curriedaddNumbers = function (a) {
-    return function (b, c) {
-      let __$curriedaddNumbers = function (b) {
-        return function (c) {
-          console.log(a + b + c);
-          return a + b + c;
-        }.bind(this);
-      }.bind(this);
-
-      const args = [];
-      if (b !== undefined) args.push(b);
-      if (c !== undefined) args.push(c);
-
-      for (let i = 0; i < args.length; i++) {
-        if (arguments && arguments.length <= i && i != 0) break;
-        const arg = args[i];
-        if (arg === undefined) __$curriedaddNumbers = __$curriedaddNumbers();
-        else __$curriedaddNumbers = __$curriedaddNumbers(arg);
-      }
-
-      if (args.length === 0) __$curriedaddNumbers = __$curriedaddNumbers();
-      return __$curriedaddNumbers;
-    }.bind(this);
-  }.bind(this);
-
-  const args = [];
-  if (a !== undefined) args.push(a);
-  if (b !== undefined) args.push(b);
-  if (c !== undefined) args.push(c);
-
-  for (let i = 0; i < args.length; i++) {
-    if (arguments && arguments.length <= i && i != 0) break;
-    const arg = args[i];
-    if (arg === undefined) __$curriedaddNumbers = __$curriedaddNumbers();
-    else __$curriedaddNumbers = __$curriedaddNumbers(arg);
-  }
-
-  if (args.length === 0) __$curriedaddNumbers = __$curriedaddNumbers();
-  return __$curriedaddNumbers;
-}
-
-addNumbers(5)(6)(2);
-addNumbers(5)(6, 2);
-addNumbers(5, 6, 2);
-
-
-`;
-
-exports[`Base tests function expression passed to array built-in method: function expression passed to array built-in method 1`] = `
-
-const people = [
-  { name: 'Alice', age: 21 },
-  { name: 'Max', age: 20 },
-  { name: 'Jane', age: 20 },
-];
-
-function groupBy(objectArray, property) {
-  return objectArray.reduce(function (acc, obj) {
-    const key = obj[property];
-    acc[key] ??= [];
-    acc[key].push(obj);
-    return acc;
-  }, {});
-}
-
-const groupedPeople = groupBy(people, 'age');
-console.log(groupedPeople);
-
-const groupedPeople2 = groupBy(people)('age');
-console.log(groupedPeople2);
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const people = [
-  {
-    name: "Alice",
-    age: 21,
-  },
-  {
-    name: "Max",
-    age: 20,
-  },
-  {
-    name: "Jane",
-    age: 20,
-  },
-];
-
-function groupBy(objectArray, property) {
-  let __$curriedgroupBy = function (objectArray) {
-    return function (property) {
-      return objectArray.reduce(function (acc, obj) {
-        const key = obj[property];
-        acc[key] ??= [];
-        acc[key].push(obj);
-        return acc;
-      }, {});
-    }.bind(this);
-  }.bind(this);
-
-  const args = [];
-  if (objectArray !== undefined) args.push(objectArray);
-  if (property !== undefined) args.push(property);
-
-  for (let i = 0; i < args.length; i++) {
-    if (arguments && arguments.length <= i && i != 0) break;
-    const arg = args[i];
-    if (arg === undefined) __$curriedgroupBy = __$curriedgroupBy();
-    else __$curriedgroupBy = __$curriedgroupBy(arg);
-  }
-
-  if (args.length === 0) __$curriedgroupBy = __$curriedgroupBy();
-  return __$curriedgroupBy;
-}
-
-const groupedPeople = groupBy(people, "age");
-console.log(groupedPeople);
-const groupedPeople2 = groupBy(people)("age");
-console.log(groupedPeople2);
-
-
-`;
-
-exports[`Base tests function using parent object's variables: function using parent object's variables 1`] = `
-
-const obj = {
-  value: 100,
-  increaseValue(a, b, c) {
-    this.value += a;
-    this.value += b;
-    this.value += c;
-  }
-};
-
-obj.increaseValue(6, 7, 8);
-console.log(obj.value); // Should be 121
-
-const incrVal5 = obj.increaseValue(5);
-incrVal5(6, 7);
-console.log(obj.value); // Should be 139
-
-incrVal5.call(obj, 6, 7);
-console.log(obj.value); // Should be 157
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const obj = {
-  value: 100,
-
-  increaseValue(a, b, c) {
-    let __$curriedFunc = function (a) {
-      return function (b, c) {
-        let __$curriedFunc = function (b) {
-          return function (c) {
-            this.value += a;
-            this.value += b;
-            this.value += c;
-          }.bind(this);
-        }.bind(this);
-
-        const args = [];
-        if (b !== undefined) args.push(b);
-        if (c !== undefined) args.push(c);
-
-        for (let i = 0; i < args.length; i++) {
-          if (arguments && arguments.length <= i && i != 0) break;
-          const arg = args[i];
-          if (arg === undefined) __$curriedFunc = __$curriedFunc();
-          else __$curriedFunc = __$curriedFunc(arg);
-        }
-
-        if (args.length === 0) __$curriedFunc = __$curriedFunc();
-        return __$curriedFunc;
-      }.bind(this);
-    }.bind(this);
-
-    const args = [];
-    if (a !== undefined) args.push(a);
-    if (b !== undefined) args.push(b);
-    if (c !== undefined) args.push(c);
-
-    for (let i = 0; i < args.length; i++) {
-      if (arguments && arguments.length <= i && i != 0) break;
-      const arg = args[i];
-      if (arg === undefined) __$curriedFunc = __$curriedFunc();
-      else __$curriedFunc = __$curriedFunc(arg);
-    }
-
-    if (args.length === 0) __$curriedFunc = __$curriedFunc();
-    return __$curriedFunc;
-  },
-};
-obj.increaseValue(6, 7, 8);
-console.log(obj.value); // Should be 121
-
-const incrVal5 = obj.increaseValue(5);
-incrVal5(6, 7);
-console.log(obj.value); // Should be 139
-
-incrVal5.call(obj, 6, 7);
-console.log(obj.value); // Should be 157
-
-
-`;
-
-exports[`Base tests function with no params: function with no params 1`] = `
-
-function showMessage() {
-  alert("Hello everyone");
-}
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-function showMessage() {
-  alert("Hello everyone");
-}
-
-
-`;
-
-exports[`Base tests generator function: generator function 1`] = `
-
-function* anotherGenerator(i,j) {
-  yield i + 1;
-  yield i + 2;
-  yield j + 1;
-  yield j + 2;
-}
-
-function* generator(i,j,k) {
-  yield* anotherGenerator(i,j);
-  yield k + 1;
-  yield k + 2;
-}
-
-const gen = generator(10, 20, 30);
-
-console.log(gen.next().value); // 11
-console.log(gen.next().value); // 12
-console.log(gen.next().value); // 21
-console.log(gen.next().value); // 22
-console.log(gen.next().value); // 31
-console.log(gen.next().value); // 32
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-function anotherGenerator(i, j) {
-  let __$curriedanotherGenerator = function (i) {
-    return function* (j) {
-      yield i + 1;
-      yield i + 2;
-      yield j + 1;
-      yield j + 2;
-    }.bind(this);
-  }.bind(this);
-
-  const args = [];
-  if (i !== undefined) args.push(i);
-  if (j !== undefined) args.push(j);
-
-  for (let i = 0; i < args.length; i++) {
-    if (arguments && arguments.length <= i && i != 0) break;
-    const arg = args[i];
-    if (arg === undefined)
-      __$curriedanotherGenerator = __$curriedanotherGenerator();
-    else __$curriedanotherGenerator = __$curriedanotherGenerator(arg);
-  }
-
-  if (args.length === 0)
-    __$curriedanotherGenerator = __$curriedanotherGenerator();
-  return __$curriedanotherGenerator;
-}
-
-function generator(i, j, k) {
-  let __$curriedgenerator = function (i) {
-    return function (j, k) {
-      let __$curriedgenerator = function (j) {
-        return function* (k) {
-          yield* anotherGenerator(i, j);
-          yield k + 1;
-          yield k + 2;
-        }.bind(this);
-      }.bind(this);
-
-      const args = [];
-      if (j !== undefined) args.push(j);
-      if (k !== undefined) args.push(k);
-
-      for (let i = 0; i < args.length; i++) {
-        if (arguments && arguments.length <= i && i != 0) break;
-        const arg = args[i];
-        if (arg === undefined) __$curriedgenerator = __$curriedgenerator();
-        else __$curriedgenerator = __$curriedgenerator(arg);
-      }
-
-      if (args.length === 0) __$curriedgenerator = __$curriedgenerator();
-      return __$curriedgenerator;
-    }.bind(this);
-  }.bind(this);
-
-  const args = [];
-  if (i !== undefined) args.push(i);
-  if (j !== undefined) args.push(j);
-  if (k !== undefined) args.push(k);
-
-  for (let i = 0; i < args.length; i++) {
-    if (arguments && arguments.length <= i && i != 0) break;
-    const arg = args[i];
-    if (arg === undefined) __$curriedgenerator = __$curriedgenerator();
-    else __$curriedgenerator = __$curriedgenerator(arg);
-  }
-
-  if (args.length === 0) __$curriedgenerator = __$curriedgenerator();
-  return __$curriedgenerator;
-}
-
-const gen = generator(10, 20, 30);
-console.log(gen.next().value); // 11
-
-console.log(gen.next().value); // 12
-
-console.log(gen.next().value); // 21
-
-console.log(gen.next().value); // 22
-
-console.log(gen.next().value); // 31
-
-console.log(gen.next().value); // 32
-
-
-`;
-
-exports[`Base tests iife: iife 1`] = `
-
-const result = (function (a, b, c) {
-  return a + b + c;
-})(1, 2)(3);
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-const result = (function (a, b, c) {
-  let __$curriedFunc = function (a) {
-    return function (b, c) {
-      let __$curriedFunc = function (b) {
-        return function (c) {
-          return a + b + c;
-        }.bind(this);
-      }.bind(this);
-
-      const args = [];
-      if (b !== undefined) args.push(b);
-      if (c !== undefined) args.push(c);
-
-      for (let i = 0; i < args.length; i++) {
-        if (arguments && arguments.length <= i && i != 0) break;
-        const arg = args[i];
-        if (arg === undefined) __$curriedFunc = __$curriedFunc();
-        else __$curriedFunc = __$curriedFunc(arg);
-      }
-
-      if (args.length === 0) __$curriedFunc = __$curriedFunc();
-      return __$curriedFunc;
-    }.bind(this);
-  }.bind(this);
-
-  const args = [];
-  if (a !== undefined) args.push(a);
-  if (b !== undefined) args.push(b);
-  if (c !== undefined) args.push(c);
-
-  for (let i = 0; i < args.length; i++) {
-    if (arguments && arguments.length <= i && i != 0) break;
-    const arg = args[i];
-    if (arg === undefined) __$curriedFunc = __$curriedFunc();
-    else __$curriedFunc = __$curriedFunc(arg);
-  }
-
-  if (args.length === 0) __$curriedFunc = __$curriedFunc();
-  return __$curriedFunc;
-})(
-  1,
-  2
-)(3);
-
-
-`;
-
-exports[`Base tests named function expression with 3 parameters: named function expression with 3 parameters 1`] = `
-
-let counter = 0;
-
-const multiplyNumbers = function multiply (a, b, c) {
-  if (counter == 0) {
-    counter++;
-    console.log(multiply(a, b, c));
-  }
-
-  console.log(a * b * c);
-  return a * b * c;
-};
-
-multiplyNumbers(1)(2)(3);
-multiplyNumbers(1)(2, 3);
-multiplyNumbers(1, 2, 3);
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-let counter = 0;
-
-const multiplyNumbers = function multiply(a, b, c) {
-  let __$curriedmultiply = function (a) {
-    return function (b, c) {
-      let __$curriedmultiply = function (b) {
-        return function (c) {
-          if (counter == 0) {
-            counter++;
-            console.log(multiply(a, b, c));
-          }
-
-          console.log(a * b * c);
-          return a * b * c;
-        }.bind(this);
-      }.bind(this);
-
-      const args = [];
-      if (b !== undefined) args.push(b);
-      if (c !== undefined) args.push(c);
-
-      for (let i = 0; i < args.length; i++) {
-        if (arguments && arguments.length <= i && i != 0) break;
-        const arg = args[i];
-        if (arg === undefined) __$curriedmultiply = __$curriedmultiply();
-        else __$curriedmultiply = __$curriedmultiply(arg);
-      }
-
-      if (args.length === 0) __$curriedmultiply = __$curriedmultiply();
-      return __$curriedmultiply;
-    }.bind(this);
-  }.bind(this);
-
-  const args = [];
-  if (a !== undefined) args.push(a);
-  if (b !== undefined) args.push(b);
-  if (c !== undefined) args.push(c);
-
-  for (let i = 0; i < args.length; i++) {
-    if (arguments && arguments.length <= i && i != 0) break;
-    const arg = args[i];
-    if (arg === undefined) __$curriedmultiply = __$curriedmultiply();
-    else __$curriedmultiply = __$curriedmultiply(arg);
-  }
-
-  if (args.length === 0) __$curriedmultiply = __$curriedmultiply();
-  return __$curriedmultiply;
-};
-
-multiplyNumbers(1)(2)(3);
-multiplyNumbers(1)(2, 3);
-multiplyNumbers(1, 2, 3);
-
-
-`;
-
-exports[`Base tests nested functions: nested functions 1`] = `
-
-function addSquares(a, b) {
-  function square(x) {
-    console.log(x * x);
-    return x * x;
-  }
-  return square(a) + square(b);
-}
-
-      ↓ ↓ ↓ ↓ ↓ ↓
-
-function addSquares(a, b) {
-  let __$curriedaddSquares = function (a) {
-    return function (b) {
-      function square(x) {
-        console.log(x * x);
-        return x * x;
-      }
-
-      return square(a) + square(b);
-    }.bind(this);
-  }.bind(this);
-
-  const args = [];
-  if (a !== undefined) args.push(a);
-  if (b !== undefined) args.push(b);
-
-  for (let i = 0; i < args.length; i++) {
-    if (arguments && arguments.length <= i && i != 0) break;
-    const arg = args[i];
-    if (arg === undefined) __$curriedaddSquares = __$curriedaddSquares();
-    else __$curriedaddSquares = __$curriedaddSquares(arg);
-  }
-
-  if (args.length === 0) __$curriedaddSquares = __$curriedaddSquares();
-  return __$curriedaddSquares;
-}
-
-
-`;
-
-exports[`Base tests with default parameters at the end: with default parameters at the end 1`] = `
+exports[`Default Parameters tests with default parameters at the end: with default parameters at the end 1`] = `
 
 function withDefaults(a, b, c = 1, d = 2, e = 3) {
   console.log([a, b, c, d, e]);
@@ -1325,7 +956,7 @@ withDefaults(1, 2)(3, 4)(5);
 
 `;
 
-exports[`Base tests with default parameters in between : with default parameters in between  1`] = `
+exports[`Default Parameters tests with default parameters in between : with default parameters in between  1`] = `
 
 function withDefaults(a, b, c = 1, d = 2, e = 3, f, g) {
   return [a, b, c, d, e, f, g];
@@ -1479,7 +1110,89 @@ console.log(withDefaults(1, 2)()()()(3, 4));
 
 `;
 
-exports[`Base tests with one rest parameters field: with one rest parameters field 1`] = `
+exports[`Function context tests function using parent object's variables: function using parent object's variables 1`] = `
+
+const obj = {
+  value: 100,
+  increaseValue(a, b, c) {
+    this.value += a;
+    this.value += b;
+    this.value += c;
+  }
+};
+
+obj.increaseValue(6, 7, 8);
+console.log(obj.value); // Should be 121
+
+const incrVal5 = obj.increaseValue(5);
+incrVal5(6, 7);
+console.log(obj.value); // Should be 139
+
+incrVal5.call(obj, 6, 7);
+console.log(obj.value); // Should be 157
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const obj = {
+  value: 100,
+
+  increaseValue(a, b, c) {
+    let __$curriedFunc = function (a) {
+      return function (b, c) {
+        let __$curriedFunc = function (b) {
+          return function (c) {
+            this.value += a;
+            this.value += b;
+            this.value += c;
+          }.bind(this);
+        }.bind(this);
+
+        const args = [];
+        if (b !== undefined) args.push(b);
+        if (c !== undefined) args.push(c);
+
+        for (let i = 0; i < args.length; i++) {
+          if (arguments && arguments.length <= i && i != 0) break;
+          const arg = args[i];
+          if (arg === undefined) __$curriedFunc = __$curriedFunc();
+          else __$curriedFunc = __$curriedFunc(arg);
+        }
+
+        if (args.length === 0) __$curriedFunc = __$curriedFunc();
+        return __$curriedFunc;
+      }.bind(this);
+    }.bind(this);
+
+    const args = [];
+    if (a !== undefined) args.push(a);
+    if (b !== undefined) args.push(b);
+    if (c !== undefined) args.push(c);
+
+    for (let i = 0; i < args.length; i++) {
+      if (arguments && arguments.length <= i && i != 0) break;
+      const arg = args[i];
+      if (arg === undefined) __$curriedFunc = __$curriedFunc();
+      else __$curriedFunc = __$curriedFunc(arg);
+    }
+
+    if (args.length === 0) __$curriedFunc = __$curriedFunc();
+    return __$curriedFunc;
+  },
+};
+obj.increaseValue(6, 7, 8);
+console.log(obj.value); // Should be 121
+
+const incrVal5 = obj.increaseValue(5);
+incrVal5(6, 7);
+console.log(obj.value); // Should be 139
+
+incrVal5.call(obj, 6, 7);
+console.log(obj.value); // Should be 157
+
+
+`;
+
+exports[`Rest Parameter tests with one rest parameters field: with one rest parameters field 1`] = `
 
 const multiplyAll = (a, b, ...rest) => {
   let product = a * b;
@@ -1545,6 +1258,293 @@ const multiplyAll = (a, b, ...rest) => {
 multiplyAll(1, 2)();
 multiplyAll(1, 2)(3, 4, 5);
 multiplyAll(1)(2)(3, 4);
+
+
+`;
+
+exports[`Special Function tests arrow function passed to array built-in method: arrow function passed to array built-in method 1`] = `
+
+const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
+
+const result1 = words.filter((word, index) => (word.length > 6) && (index <= 4));
+console.log(result1);
+
+const result2 = words.filter((word, index, arr) => (word.length > 6) && (index <= 4));
+console.log(result2);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const words = [
+  "spray",
+  "limit",
+  "elite",
+  "exuberant",
+  "destruction",
+  "present",
+];
+const result1 = words.filter((word, index) => {
+  let __$curriedFunc = function (word) {
+    return function (index) {
+      return word.length > 6 && index <= 4;
+    }.bind(this);
+  }.bind(this);
+
+  const args = [];
+  if (word !== undefined) args.push(word);
+  if (index !== undefined) args.push(index);
+
+  for (let i = 0; i < args.length; i++) {
+    if (arguments && arguments.length <= i && i != 0) break;
+    const arg = args[i];
+    if (arg === undefined) __$curriedFunc = __$curriedFunc();
+    else __$curriedFunc = __$curriedFunc(arg);
+  }
+
+  if (args.length === 0) __$curriedFunc = __$curriedFunc();
+  return __$curriedFunc;
+});
+console.log(result1);
+const result2 = words.filter((word, index, arr) => {
+  let __$curriedFunc = function (word) {
+    return function (index, arr) {
+      let __$curriedFunc = function (index) {
+        return function (arr) {
+          return word.length > 6 && index <= 4;
+        }.bind(this);
+      }.bind(this);
+
+      const args = [];
+      if (index !== undefined) args.push(index);
+      if (arr !== undefined) args.push(arr);
+
+      for (let i = 0; i < args.length; i++) {
+        if (arguments && arguments.length <= i && i != 0) break;
+        const arg = args[i];
+        if (arg === undefined) __$curriedFunc = __$curriedFunc();
+        else __$curriedFunc = __$curriedFunc(arg);
+      }
+
+      if (args.length === 0) __$curriedFunc = __$curriedFunc();
+      return __$curriedFunc;
+    }.bind(this);
+  }.bind(this);
+
+  const args = [];
+  if (word !== undefined) args.push(word);
+  if (index !== undefined) args.push(index);
+  if (arr !== undefined) args.push(arr);
+
+  for (let i = 0; i < args.length; i++) {
+    if (arguments && arguments.length <= i && i != 0) break;
+    const arg = args[i];
+    if (arg === undefined) __$curriedFunc = __$curriedFunc();
+    else __$curriedFunc = __$curriedFunc(arg);
+  }
+
+  if (args.length === 0) __$curriedFunc = __$curriedFunc();
+  return __$curriedFunc;
+});
+console.log(result2);
+
+
+`;
+
+exports[`Special Function tests function built using function constructor: function built using function constructor 1`] = `
+
+const adder = new Function('a', 'b', 'return a + b');
+console.log(adder(2, 6));
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const adder = new Function("a", "b", "return a + b");
+console.log(adder(2, 6));
+
+
+`;
+
+exports[`Special Function tests function expression passed to array built-in method: function expression passed to array built-in method 1`] = `
+
+const people = [
+  { name: 'Alice', age: 21 },
+  { name: 'Max', age: 20 },
+  { name: 'Jane', age: 20 },
+];
+
+function groupBy(objectArray, property) {
+  return objectArray.reduce(function (acc, obj) {
+    const key = obj[property];
+    acc[key] ??= [];
+    acc[key].push(obj);
+    return acc;
+  }, {});
+}
+
+const groupedPeople = groupBy(people, 'age');
+console.log(groupedPeople);
+
+const groupedPeople2 = groupBy(people)('age');
+console.log(groupedPeople2);
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+const people = [
+  {
+    name: "Alice",
+    age: 21,
+  },
+  {
+    name: "Max",
+    age: 20,
+  },
+  {
+    name: "Jane",
+    age: 20,
+  },
+];
+
+function groupBy(objectArray, property) {
+  let __$curriedgroupBy = function (objectArray) {
+    return function (property) {
+      return objectArray.reduce(function (acc, obj) {
+        const key = obj[property];
+        acc[key] ??= [];
+        acc[key].push(obj);
+        return acc;
+      }, {});
+    }.bind(this);
+  }.bind(this);
+
+  const args = [];
+  if (objectArray !== undefined) args.push(objectArray);
+  if (property !== undefined) args.push(property);
+
+  for (let i = 0; i < args.length; i++) {
+    if (arguments && arguments.length <= i && i != 0) break;
+    const arg = args[i];
+    if (arg === undefined) __$curriedgroupBy = __$curriedgroupBy();
+    else __$curriedgroupBy = __$curriedgroupBy(arg);
+  }
+
+  if (args.length === 0) __$curriedgroupBy = __$curriedgroupBy();
+  return __$curriedgroupBy;
+}
+
+const groupedPeople = groupBy(people, "age");
+console.log(groupedPeople);
+const groupedPeople2 = groupBy(people)("age");
+console.log(groupedPeople2);
+
+
+`;
+
+exports[`Special Function tests generator function: generator function 1`] = `
+
+function* anotherGenerator(i,j) {
+  yield i + 1;
+  yield i + 2;
+  yield j + 1;
+  yield j + 2;
+}
+
+function* generator(i,j,k) {
+  yield* anotherGenerator(i,j);
+  yield k + 1;
+  yield k + 2;
+}
+
+const gen = generator(10, 20, 30);
+
+console.log(gen.next().value); // 11
+console.log(gen.next().value); // 12
+console.log(gen.next().value); // 21
+console.log(gen.next().value); // 22
+console.log(gen.next().value); // 31
+console.log(gen.next().value); // 32
+
+      ↓ ↓ ↓ ↓ ↓ ↓
+
+function anotherGenerator(i, j) {
+  let __$curriedanotherGenerator = function (i) {
+    return function* (j) {
+      yield i + 1;
+      yield i + 2;
+      yield j + 1;
+      yield j + 2;
+    }.bind(this);
+  }.bind(this);
+
+  const args = [];
+  if (i !== undefined) args.push(i);
+  if (j !== undefined) args.push(j);
+
+  for (let i = 0; i < args.length; i++) {
+    if (arguments && arguments.length <= i && i != 0) break;
+    const arg = args[i];
+    if (arg === undefined)
+      __$curriedanotherGenerator = __$curriedanotherGenerator();
+    else __$curriedanotherGenerator = __$curriedanotherGenerator(arg);
+  }
+
+  if (args.length === 0)
+    __$curriedanotherGenerator = __$curriedanotherGenerator();
+  return __$curriedanotherGenerator;
+}
+
+function generator(i, j, k) {
+  let __$curriedgenerator = function (i) {
+    return function (j, k) {
+      let __$curriedgenerator = function (j) {
+        return function* (k) {
+          yield* anotherGenerator(i, j);
+          yield k + 1;
+          yield k + 2;
+        }.bind(this);
+      }.bind(this);
+
+      const args = [];
+      if (j !== undefined) args.push(j);
+      if (k !== undefined) args.push(k);
+
+      for (let i = 0; i < args.length; i++) {
+        if (arguments && arguments.length <= i && i != 0) break;
+        const arg = args[i];
+        if (arg === undefined) __$curriedgenerator = __$curriedgenerator();
+        else __$curriedgenerator = __$curriedgenerator(arg);
+      }
+
+      if (args.length === 0) __$curriedgenerator = __$curriedgenerator();
+      return __$curriedgenerator;
+    }.bind(this);
+  }.bind(this);
+
+  const args = [];
+  if (i !== undefined) args.push(i);
+  if (j !== undefined) args.push(j);
+  if (k !== undefined) args.push(k);
+
+  for (let i = 0; i < args.length; i++) {
+    if (arguments && arguments.length <= i && i != 0) break;
+    const arg = args[i];
+    if (arg === undefined) __$curriedgenerator = __$curriedgenerator();
+    else __$curriedgenerator = __$curriedgenerator(arg);
+  }
+
+  if (args.length === 0) __$curriedgenerator = __$curriedgenerator();
+  return __$curriedgenerator;
+}
+
+const gen = generator(10, 20, 30);
+console.log(gen.next().value); // 11
+
+console.log(gen.next().value); // 12
+
+console.log(gen.next().value); // 21
+
+console.log(gen.next().value); // 22
+
+console.log(gen.next().value); // 31
+
+console.log(gen.next().value); // 32
 
 
 `;
